@@ -42,14 +42,19 @@ from tools.mock_tools import (
 from utils import SchemaValidator, ValidationError, DeadLetterQueue
 from llm import LLMReasoner
 
-# Setup logging
+# Setup logging with UTF-8 encoding support for Windows
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+# Enable UTF-8 encoding for console output on Windows
+if hasattr(console_handler.stream, 'reconfigure'):
+    console_handler.stream.reconfigure(encoding='utf-8', errors='replace')
+
+file_handler = logging.FileHandler('agent.log', encoding='utf-8')
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+
 logging.basicConfig(
     level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler('agent.log')
-    ]
+    handlers=[console_handler, file_handler]
 )
 logger = logging.getLogger(__name__)
 
@@ -831,9 +836,10 @@ ShopWave Support Team"""
             logger.info(f"[{ticket_id}] OBSERVATION: Analyzing results")
             
             # Make decision based on policy and tool results
+            # Pass KB results to inform decision-making
             decision = self._make_decision(
                 ticket, customer, order, product,
-                eligible, days_since, ticket_text
+                eligible, days_since, ticket_text, kb_result
             )
             
             logger.info(f"[{ticket_id}] Decision: {decision['action'].value}")
@@ -881,8 +887,7 @@ ShopWave Support Team
                     reasoning=decision['reasoning'],
                     confidence_score=decision['confidence'],
                     tool_calls=tool_calls,
-                    customer_message=customer_message,
-                    status="resolved"
+                    customer_message=customer_message
                 )
                 
             elif decision['action'] == ResolutionAction.DENY:
@@ -914,8 +919,7 @@ ShopWave Support Team
                     reasoning=decision['reasoning'],
                     confidence_score=decision['confidence'],
                     tool_calls=tool_calls,
-                    customer_message=customer_message,
-                    status="resolved"
+                    customer_message=customer_message
                 )
                 
             else:  # ESCALATE
@@ -960,8 +964,7 @@ ShopWave Support Team
                     confidence_score=decision['confidence'],
                     tool_calls=tool_calls,
                     customer_message=customer_message,
-                    escalation_case_id=case_id,
-                    status="escalated"
+                    escalation_case_id=case_id
                 )
         
         except Exception as e:
@@ -995,8 +998,7 @@ ShopWave Support Team
             confidence_score=0.0,
             tool_calls=tool_calls,
             customer_message="Your request has been escalated to our support team.",
-            escalation_case_id=case_id,
-            status="escalated"
+            escalation_case_id=case_id
         )
     
     async def _call_tool(self, tool_name: str, params: Dict[str, Any], 
@@ -1075,16 +1077,18 @@ ShopWave Support Team
     
     def _make_decision(self, ticket: Dict, customer: Dict, order: Dict, 
                       product: Dict, eligible: bool, days_since: int, 
-                      ticket_text: str) -> Dict[str, Any]:
+                      ticket_text: str, kb_result: Dict[str, Any] = None) -> Dict[str, Any]:
         """
-        Make resolution decision based on ticket and policy
+        Make resolution decision based on ticket, policy, and knowledge base
         
         Implements business logic:
         - Auto-approve: Clear policy compliance
         - Auto-deny: Clear policy violation
         - Escalate: Edge cases, high value, ambiguous scenarios
+        
+        Incorporates knowledge base policies for informed decisions
         """
-        logger.info(f"[{ticket.get('ticket_id')}] Making decision based on policy")
+        logger.info(f"[{ticket.get('ticket_id')}] Making decision based on policy and knowledge base")
         
         # Analyze ticket sentiment/type
         ticket_text_lower = ticket_text.lower()
@@ -1108,13 +1112,19 @@ ShopWave Support Team
         
         logger.info(f"Defective: {is_defective}, Wrong: {is_wrong_item}, Change of Mind: {is_change_of_mind}, Damaged: {is_damaged}")
         
+        # Extract knowledge base policy context
+        kb_policies = ""
+        if kb_result and kb_result.get('results'):
+            kb_policies = " | ".join([r.get('content', '')[:100] for r in kb_result.get('results', [])[:3]])
+            logger.info(f"[{ticket.get('ticket_id')}] KB Policies: {kb_policies[:200]}")
+        
         # Decision logic
         
         # AUTO-APPROVE scenarios
         if is_damaged:
             return {
                 "action": ResolutionAction.APPROVE_REFUND,
-                "reasoning": "Item damaged on arrival - entitled to refund regardless of return window per policy",
+                "reasoning": "Item damaged on arrival - KB policy: 'eligible for full refund regardless of return window'",
                 "confidence": 0.95,
                 "reason": None
             }
@@ -1122,7 +1132,7 @@ ShopWave Support Team
         if is_wrong_item:
             return {
                 "action": ResolutionAction.APPROVE_EXCHANGE,
-                "reasoning": "Wrong item/variant delivered - entitled to exchange or refund regardless of return window",
+                "reasoning": "Wrong item/variant delivered - KB policy: 'entitled to exchange or refund regardless of return window'",
                 "confidence": 0.95,
                 "reason": None
             }
@@ -1134,7 +1144,7 @@ ShopWave Support Team
             if datetime.now(order_date.tzinfo) < warranty_expiry:
                 return {
                     "action": ResolutionAction.APPROVE_REPLACEMENT,
-                    "reasoning": "Defective product within warranty period - replacement approved",
+                    "reasoning": f"Defective product within {product['warranty_months']}-month warranty per KB policy - replacement approved",
                     "confidence": 0.92,
                     "reason": None
                 }
@@ -1161,7 +1171,7 @@ ShopWave Support Team
             if days_since <= 60:  # Extended window for VIP
                 return {
                     "action": ResolutionAction.APPROVE_REFUND,
-                    "reasoning": f"VIP/Gold customer request within extended grace period ({days_since} days)",
+                    "reasoning": f"{customer['tier'].upper()} customer - KB policy: 'extended leniency, eligible for exceptions' ({days_since} days)",
                     "confidence": 0.85,
                     "reason": None
                 }
@@ -1169,10 +1179,10 @@ ShopWave Support Team
         # AUTO-DENY scenarios
         
         # Check for used footwear (non-returnable by policy)
-        if product['category'] == 'footwear' and 'worn' in ticket_text_lower or 'wore' in ticket_text_lower:
+        if product['category'] == 'footwear' and ('worn' in ticket_text_lower or 'wore' in ticket_text_lower):
             return {
                 "action": ResolutionAction.DENY,
-                "reasoning": "Footwear has been worn - non-returnable per hygiene policy",
+                "reasoning": "Footwear has been worn - KB policy: 'Item must be unworn with no outdoor use' (non-returnable)",
                 "confidence": 0.95,
                 "reason": "Items that have been worn are non-returnable due to hygiene policy",
                 "alternatives": "We're happy to help troubleshoot any comfort issues"
@@ -1182,7 +1192,7 @@ ShopWave Support Team
         if product['category'] == 'sports_fitness' and 'used' in ticket_text_lower:
             return {
                 "action": ResolutionAction.DENY,
-                "reasoning": "Sports equipment marked as used - non-returnable per hygiene/safety policy",
+                "reasoning": "Sports equipment marked as used - KB policy: 'Non-returnable if used (hygiene policy)'",
                 "confidence": 0.95,
                 "reason": "Used sports equipment is non-returnable for health and safety reasons",
                 "alternatives": "We're happy to discuss product recommendations"
@@ -1200,11 +1210,11 @@ ShopWave Support Team
         
         # ESCALATION scenarios
         
-        # High-value items
-        if order['total_price'] > 500:
+        # High-value items exceeding KB threshold
+        if order['total_price'] > 200:  # KB: refund amount exceeds $200
             return {
                 "action": ResolutionAction.ESCALATE,
-                "reasoning": f"High-value order (${order['total_price']}) - requires manager review",
+                "reasoning": f"KB escalation rule: 'refund amount exceeds $200' (${order['total_price']}) - requires manager review",
                 "confidence": 0.70,
                 "escalation_summary": f"High-value request: {ticket['subject']}",
                 "priority": "normal"
@@ -1214,17 +1224,17 @@ ShopWave Support Team
         if not eligible and days_since >= 25 and days_since <= 35 and customer['total_orders'] > 5:
             return {
                 "action": ResolutionAction.ESCALATE,
-                "reasoning": f"Edge case: {days_since} days, good customer history, borderline eligibility",
+                "reasoning": f"KB rule - Premium: 'borderline cases (1-3 days outside window)' - {days_since} days with good history",
                 "confidence": 0.60,
                 "escalation_summary": f"Borderline return window customer wants to return for {ticket['subject']}",
                 "priority": "normal"
             }
         
-        # Unclear scenarios
+        # Unclear scenarios - KB policy: escalate if agent confidence < 0.6
         if not is_defective and not is_wrong_item and not is_change_of_mind and not is_damaged:
             return {
                 "action": ResolutionAction.ESCALATE,
-                "reasoning": f"Unclear request type - requires agent review",
+                "reasoning": f"KB escalation rule: unclear request - confidence below 0.6 threshold, requires agent review",
                 "confidence": 0.50,
                 "escalation_summary": f"Unclear request: {ticket['subject']} - {ticket.get('body', '')[:200]}",
                 "priority": "normal"
@@ -1276,17 +1286,22 @@ ShopWave Support Team
         }
         
         for resolution in self.audit_log:
+            # Convert TicketResolution to dict
+            if isinstance(resolution, TicketResolution):
+                resolution_dict = resolution.to_dict()
+            else:
+                resolution_dict = resolution
+            
             # Convert tool calls to serializable format
             tool_calls_data = []
-            for tc in resolution['tool_calls']:
-                if isinstance(tc, ToolCall):
-                    tool_calls_data.append(asdict(tc))
-                elif isinstance(tc, dict):
+            for tc in resolution_dict.get('tool_calls', []):
+                if isinstance(tc, dict):
                     tool_calls_data.append(tc)
+                else:
+                    tool_calls_data.append(asdict(tc))
             
-            resolution_copy = dict(resolution)
-            resolution_copy['tool_calls'] = tool_calls_data
-            audit_data['resolutions'].append(resolution_copy)
+            resolution_dict['tool_calls'] = tool_calls_data
+            audit_data['resolutions'].append(resolution_dict)
         
         # Write as JSON
         os.makedirs(os.path.dirname(filepath), exist_ok=True)

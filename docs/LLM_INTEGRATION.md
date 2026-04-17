@@ -161,7 +161,7 @@ LLM REASONING STATISTICS:
 
 ### Security Notes
 
-- ⚠️ **Never commit API keys to Git!**
+- **Never commit API keys to Git!**
 - Use environment variables only
 - Consider API key rotation for production
 - Monitor API costs in provider dashboards

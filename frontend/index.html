@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Support Resolution Agent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/index.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot"></i> Support Resolution Agent
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tickets-section">Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#results-section">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats-section">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="badge bg-success ms-2" id="health-status">
+                            <i class="fas fa-circle"></i> Connected
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid py-4">
+        <!-- Hero Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card hero-card shadow-sm border-0">
+                    <div class="card-body py-5">
+                        <h1 class="card-title mb-3">
+                            <i class="fas fa-brain"></i> Autonomous Support Agent
+                        </h1>
+                        <p class="card-text lead text-muted">
+                            Intelligent ticket resolution with ReAct reasoning, confidence calibration, and graceful escalation
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-info me-2"><i class="fas fa-check-circle"></i> Async Processing</span>
+                            <span class="badge bg-info me-2"><i class="fas fa-sync"></i> Retry Logic</span>
+                            <span class="badge bg-info"><i class="fas fa-chart-bar"></i> Real-time Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <button class="btn btn-success btn-lg w-100" id="load-all-btn">
+                    <i class="fas fa-download"></i> Load All Tickets
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-lg w-100" id="process-all-btn">
+                    <i class="fas fa-play"></i> Process All At Once
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-info btn-lg w-100" id="process-one-by-one-btn">
+                    <i class="fas fa-step-forward"></i> Process One by One
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-primary btn-lg w-100" id="refresh-stats-btn">
+                    <i class="fas fa-sync-alt"></i> Refresh Statistics
+                </button>
+            </div>
+        </div>
+
+        <!-- Tickets Section -->
+        <div class="row" id="tickets-section">
+            <div class="col-12">
+                <h2 class="mb-3">
+                    <i class="fas fa-ticket-alt"></i> Support Tickets
+                </h2>
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <!-- Filter & Search -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="ticket-search" placeholder="Search tickets...">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" id="ticket-filter">
+                                    <option value="">All Tickets</option>
+                                    <option value="processed">Processed</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Tickets Grid -->
+                        <div id="tickets-container" class="row">
+                            <!-- Tickets will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="row mt-5" id="results-section">
+            <div class="col-12">
+                <h2 class="mb-3">
+                    <i class="fas fa-check-double"></i> Processing Results
+                </h2>
+                <div class="card shadow-sm border-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>Action</th>
+                                    <th>Confidence</th>
+                                    <th>Tool Calls</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-table">
+                                <tr class="text-center text-muted py-4">
+                                    <td colspan="6">No results yet. Process tickets to see results.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div class="row mt-5" id="stats-section">
+            <div class="col-12">
+                <h2 class="mb-3">
+                    <i class="fas fa-chart-bar"></i> Analytics & Statistics
+                </h2>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="col-md-3 mb-4">
+                <div class="card stat-card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <i class="fas fa-ticket-alt stat-icon"></i>
+                        <h6 class="card-title text-muted mt-3">Total Processed</h6>
+                        <h2 class="stat-value" id="stat-total">0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card stat-card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <i class="fas fa-thumbs-up stat-icon text-success"></i>
+                        <h6 class="card-title text-muted mt-3">Approved</h6>
+                        <h2 class="stat-value text-success" id="stat-approved">0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card stat-card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <i class="fas fa-ban stat-icon text-danger"></i>
+                        <h6 class="card-title text-muted mt-3">Denied</h6>
+                        <h2 class="stat-value text-danger" id="stat-denied">0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card stat-card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <i class="fas fa-arrow-up stat-icon text-warning"></i>
+                        <h6 class="card-title text-muted mt-3">Escalated</h6>
+                        <h2 class="stat-value text-warning" id="stat-escalated">0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confidence Stats -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Confidence Distribution</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Average</span>
+                                <strong id="conf-avg">0.00</strong>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" id="conf-avg-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                High Confidence (&gt;0.90): <strong id="conf-high">0</strong> |
+                                Low Confidence (&lt;0.70): <strong id="conf-low">0</strong>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Stats -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Tool Utilization</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Total Calls</span>
+                                <strong id="tools-total">0</strong>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Average per Ticket</span>
+                                <strong id="tools-avg">0.0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit Log Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-3">
+                    <i class="fas fa-history"></i> Audit Log
+                </h2>
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <div id="audit-log" style="max-height: 400px; overflow-y: auto;">
+                            <p class="text-muted">No audit logs yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-body text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 id="loading-text">Processing tickets...</h5>
+                    <p class="text-muted mb-0" id="loading-details">Please wait</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 11"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="/frontend/index.js"></script>
+</body>
+</html>

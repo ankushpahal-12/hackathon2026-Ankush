@@ -218,7 +218,7 @@ TKT-6      ████████ (2 sec) (starts after TKT-1 completes)
 ...
 Total: 8 seconds for 20 tickets (with max_concurrent=5)
 
-Speedup: 5x faster ✅
+Speedup: 5x faster
 ```
 
 ### Semaphore Control

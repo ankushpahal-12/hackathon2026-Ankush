@@ -16,6 +16,10 @@ Python>=3.9
 # - abc (abstract base classes)
 # - os, sys, time (utilities)
 
+# Web Framework (for API server)
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+
 # OPTIONAL: LLM Integration (for enhanced reasoning)
 # Uncomment below to enable LLM-powered decision making:
 

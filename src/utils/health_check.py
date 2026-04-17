@@ -4,7 +4,7 @@ Monitors agent and tool health, detects degradation
 """
 
 import logging
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from enum import Enum
 from datetime import datetime, timedelta
 from dataclasses import dataclass, field
