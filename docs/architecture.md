@@ -414,3 +414,342 @@ Add observability:
 3. Pre-load all data structures
 4. Use database instead of JSON files
 5. Implement decision caching
+
+## Frontend Architecture
+
+### System Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         USER BROWSER                            │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │                   Frontend Web UI                         │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │  │
+│  │  │   HTML       │  │     CSS      │  │  JavaScript  │   │  │
+│  │  │              │  │              │  │              │   │  │
+│  │  │ - Navigation │  │ - Gradients  │  │ - API calls  │   │  │
+│  │  │ - Ticket grid│  │ - Animations │  │ - State mgmt │   │  │
+│  │  │ - Results    │  │ - Responsive │  │ - Rendering  │   │  │
+│  │  │ - Analytics  │  │ - Dark theme │  │ - Filtering  │   │  │
+│  │  │ - Audit log  │  │ - Bootstrap  │  │ - Validation │   │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘   │  │
+│  │                         │                                 │  │
+│  │                    HTTP/REST API Calls                   │  │
+│  │                   (JSON request/response)                │  │
+│  └────────────────┬────────────────────────────────────────┘  │
+│                   │                                            │
+└───────────────────┼──────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     Flask REST API Server                       │
+│                     (api_server.py)                             │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │          API Route Handlers (Flask)                     │   │
+│  │                                                         │   │
+│  │  GET  /api/tickets                Get all tickets      │   │
+│  │  GET  /api/tickets/<id>           Get specific ticket  │   │
+│  │  POST /api/process/ticket         Process 1 ticket     │   │
+│  │  POST /api/process/batch          Process multiple     │   │
+│  │  GET  /api/results                Get all results      │   │
+│  │  GET  /api/results/<id>           Get specific result  │   │
+│  │  GET  /api/stats                  Get statistics       │   │
+│  │  GET  /api/audit-log              Get audit trail      │   │
+│  │  GET  /api/health                 Health check         │   │
+│  │                                                         │   │
+│  └────────────┬──────────────────────────────────────────┘   │
+│               │                                                │
+│               ├─ Input Validation                             │
+│               ├─ CORS Headers                                 │
+│               ├─ Async Processing                             │
+│               ├─ Error Handling                               │
+│               └─ JSON Serialization                           │
+│                   │                                            │
+└───────────────────┼──────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              Backend Agent (Python - main.py)                   │
+│         (Existing ReAct loop with all tools)                    │
+│                                                                 │
+│  - Processes tickets using agent logic                         │
+│  - Calls tools with error recovery                             │
+│  - Returns structured results                                  │
+│  - Maintains audit trail                                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Frontend Components
+
+#### HTML Structure (frontend/index.html)
+```
+index.html (260 lines)
+├─ Navigation bar
+│  ├─ Logo and branding
+│  ├─ Nav links (Tickets, Results, Analytics)
+│  └─ Health status badge
+├─ Hero section
+│  ├─ Title and description
+│  └─ Feature badges
+├─ Quick action buttons
+│  ├─ Load All Tickets
+│  ├─ Process All At Once
+│  ├─ Process One by One
+│  └─ Refresh Statistics
+├─ Tickets section
+│  ├─ Search and filter controls
+│  └─ Ticket grid (responsive cards)
+├─ Results section
+│  ├─ Results table
+│  └─ Sorting and pagination
+├─ Analytics section
+│  ├─ KPI cards (Total Processed, Success Rate, etc.)
+│  ├─ Confidence distribution chart
+│  ├─ Tool utilization stats
+│  └─ Resolution breakdown pie chart
+├─ Audit log section
+│  ├─ Audit log viewer
+│  └─ Pagination controls
+└─ Modals and alerts
+   ├─ Loading modal
+   ├─ Success alerts
+   └─ Error alerts
+```
+
+#### CSS Styling (frontend/index.css)
+```
+index.css (550 lines)
+├─ Global styles
+│  ├─ CSS variables (colors, spacing)
+│  ├─ Dark theme colors
+│  └─ Typography
+├─ Component styles
+│  ├─ Navigation bar
+│  ├─ Buttons and badges
+│  ├─ Cards and panels
+│  ├─ Forms and inputs
+│  └─ Modals and alerts
+├─ Layout styles
+│  ├─ Container and grid
+│  ├─ Responsive breakpoints
+│  ├─ Flexbox utilities
+│  └─ Spacing utilities
+├─ Animation styles
+│  ├─ Transitions (0.3s cubic-bezier)
+│  ├─ Loading spinner
+│  ├─ Fade in/out effects
+│  └─ Hover effects
+├─ Bootstrap 5.3 integration
+│  ├─ Grid system customization
+│  ├─ Component overrides
+│  └─ Utility classes
+└─ Dark mode support
+   ├─ Color scheme adaptations
+   ├─ Gradient adjustments
+   └─ Shadow treatments
+```
+
+#### JavaScript Logic (frontend/index.js)
+```
+index.js (550+ lines)
+├─ Configuration
+│  ├─ API_BASE_URL = 'http://localhost:5000/api'
+│  ├─ REFRESH_INTERVAL = 5000 (5 sec)
+│  └─ State management object
+├─ Initialization
+│  ├─ DOMContentLoaded event
+│  ├─ Load tickets, results, stats
+│  ├─ Setup event listeners
+│  ├─ Check health
+│  └─ Auto-refresh timer
+├─ API Functions
+│  ├─ loadTickets() - Fetch all tickets
+│  ├─ loadResults() - Fetch processing results
+│  ├─ processSingleTicket(id) - Process one ticket
+│  ├─ processAllTickets() - Process all concurrently
+│  ├─ processOneByOne() - Process sequentially
+│  ├─ updateStats() - Fetch statistics
+│  └─ checkHealth() - Check API health
+├─ UI Functions
+│  ├─ renderTickets() - Display ticket grid
+│  ├─ renderResults() - Display results table
+│  ├─ updateStats() - Update KPI cards
+│  ├─ updateAuditLog() - Display audit log
+│  └─ filterTickets() - Search and filter
+├─ Modal Functions
+│  ├─ showLoadingModal(title, message)
+│  ├─ hideLoadingModal()
+│  ├─ showAlert(message, type)
+│  └─ Close alerts on timeout
+├─ Utility Functions
+│  ├─ formatDate(timestamp)
+│  ├─ formatConfidence(score)
+│  ├─ escapeHTML(text) - XSS prevention
+│  └─ debounce(func, delay)
+└─ Event Handlers
+   ├─ Button click events
+   ├─ Search input events
+   ├─ Filter dropdown events
+   └─ Pagination events
+```
+
+### API Endpoint Architecture
+
+```
+REST Endpoints (Flask routes)
+
+GET /api/tickets
+├─ Response: { success: true, data: { tickets: [...] } }
+├─ Ticket fields: id, customer_id, order_id, subject, body, created_at
+└─ Status: 200 OK
+
+GET /api/tickets/<ticket_id>
+├─ Response: { success: true, data: { ticket: {...} } }
+└─ Status: 200 OK or 404 Not Found
+
+POST /api/process/ticket
+├─ Request: { ticket_id: "TKT-001" }
+├─ Response: { success: true, data: { action, confidence, tool_calls } }
+└─ Status: 200 OK
+
+POST /api/process/batch
+├─ Request: { ticket_ids: ["TKT-001", "TKT-002", ...] }
+├─ Response: { success: true, data: { total_processed, duration_seconds, results: [...] } }
+└─ Status: 200 OK
+
+GET /api/results
+├─ Response: { success: true, data: { results: [...] } }
+└─ Includes: ticket_id, action, confidence, tool_calls, status
+
+GET /api/stats
+├─ Response: { success: true, data: { total_processed, approval_rate, avg_confidence, ... } }
+└─ Analytics data for dashboard
+
+GET /api/audit-log
+├─ Response: { success: true, data: { log_entries: [...] } }
+└─ Complete operation history with pagination
+
+GET /api/health
+├─ Response: { status: "healthy", api_version: "1.0", timestamp: "..." }
+└─ Status: 200 OK
+```
+
+### Frontend-Backend Data Flow
+
+```
+User Action (Click "Process All Tickets")
+    │
+    ▼
+JavaScript Event Handler
+    │
+    ├─ Validate user input
+    ├─ Show loading modal
+    ├─ Disable buttons
+    │
+    ▼
+REST API Call (POST /api/process/batch)
+    │
+    ├─ HTTP POST with JSON body
+    ├─ { ticket_ids: ["TKT-001", "TKT-002", ...] }
+    ├─ Accept: application/json
+    └─ CORS headers included
+    
+    ▼
+Flask Server (api_server.py)
+    │
+    ├─ Parse JSON request
+    ├─ Validate ticket_ids
+    ├─ Spawn async tasks for each ticket
+    │
+    ├─ Each task:
+    │  ├─ Create agent instance
+    │  ├─ Call agent.process_ticket(ticket_id)
+    │  ├─ Capture result with full metadata
+    │  └─ Store in results dict
+    │
+    └─ Wait for all tasks to complete
+    
+    ▼
+Response to Frontend (JSON)
+    │
+    ├─ { success: true, data: { total_processed: 20, duration_seconds: 8.2 } }
+    └─ HTTP 200 OK
+    
+    ▼
+JavaScript Handler
+    │
+    ├─ Hide loading modal
+    ├─ Show success alert
+    │
+    ├─ Call loadResults()
+    ├─ Call updateStats()
+    └─ Call renderTickets() (show updated status)
+    
+    ▼
+Display Updates
+    │
+    ├─ Results table updates (shows all resolutions)
+    ├─ Ticket grid updates (shows Processed status)
+    ├─ Analytics dashboard updates (new KPIs)
+    └─ Audit log updates (new entries visible)
+```
+
+### Frontend Feature Highlights
+
+```
+Real-time Updates:
+├─ Auto-refresh every 5 seconds
+├─ Manual refresh buttons
+└─ WebSocket-ready architecture (future)
+
+Search & Filter:
+├─ Client-side filtering
+├─ Search by ticket ID or content
+├─ Filter by status (Pending/Processed)
+└─ Sort results by confidence, timestamp
+
+Responsive Design:
+├─ Mobile-first approach
+├─ Breakpoints: 576px, 768px, 992px, 1200px
+├─ Touch-friendly buttons
+└─ Full functionality on all devices
+
+Accessibility:
+├─ Semantic HTML5
+├─ ARIA labels and roles
+├─ Keyboard navigation
+├─ High contrast colors (dark theme)
+
+Performance:
+├─ Minimal dependencies (no external JS libraries)
+├─ Vanilla JavaScript (no jQuery, React, etc.)
+├─ CSS-in-single-file (minimal HTTP requests)
+├─ Debounced search (reduce API calls)
+└─ Pagination for large result sets
+```
+
+### State Management
+
+```
+Frontend State Object:
+{
+    tickets: [...],           // Array of ticket objects
+    results: {...},           // Map of ticket_id -> result
+    stats: {...},             // Statistics data
+    auditLog: [...],          // Audit log entries
+    isProcessing: false,      // Processing flag
+    filters: {
+        search: '',           // Search query
+        status: ''            // Filter status
+    }
+}
+
+State Updates:
+├─ loadTickets() → updates state.tickets
+├─ loadResults() → updates state.results
+├─ updateStats() → updates state.stats
+├─ processSingleTicket() → updates state.results[id]
+└─ filterTickets() → updates state.filters
+```
