@@ -1,0 +1,55 @@
+{
+  "retry": {
+    "max_retries": 2,
+    "base_delay_seconds": 0.1,
+    "max_delay_seconds": 10.0,
+    "exponential_base": 2.0
+  },
+  "circuit_breaker": {
+    "failure_threshold": 3,
+    "recovery_timeout_seconds": 30,
+    "enabled": true
+  },
+  "timeout": {
+    "default_timeout_seconds": 5,
+    "get_customer_timeout_seconds": 5,
+    "get_order_timeout_seconds": 5,
+    "check_refund_timeout_seconds": 5,
+    "issue_refund_timeout_seconds": 5,
+    "send_reply_timeout_seconds": 5
+  },
+  "health_check": {
+    "enabled": true,
+    "check_interval_seconds": 60,
+    "degradation_threshold_percent": 20.0,
+    "critical_threshold_percent": 50.0
+  },
+  "llm": {
+    "enabled": true,
+    "use_gemini": true,
+    "use_openai": true,
+    "timeout_seconds": 10,
+    "max_retries": 1
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_file": "agent.log",
+    "audit_log_file": "output/audit_log.json",
+    "deadletter_log_file": "output/dead_letter_queue.json",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "concurrency": {
+    "max_concurrent_tickets": 20,
+    "max_concurrent_tools_per_ticket": 1,
+    "thread_pool_size": 4
+  },
+  "_comments": {
+    "retry": "Exponential backoff settings for tool call retries",
+    "circuit_breaker": "Prevent cascading failures when tools degrade",
+    "timeout": "Per-tool timeout limits (seconds)",
+    "health_check": "Monitor tool and agent health",
+    "llm": "LLM-powered reasoning enhancement (optional)",
+    "logging": "Audit trail and debugging settings",
+    "concurrency": "Parallel processing limits"
+  }
+}

@@ -1,0 +1,222 @@
+[
+  {
+    "ticket_id": "TKT-001",
+    "customer_email": "alice.turner@email.com",
+    "subject": "Refund request for headphones - defective",
+    "body": "Hi, I bought a pair of headphones last month (ORD-1001) but they stopped working after a week. The left speaker just died. I'd like a full refund please.",
+    "source": "email",
+    "created_at": "2024-03-15T09:12:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve refund - within warranty, defective product"
+  },
+  {
+    "ticket_id": "TKT-002",
+    "customer_email": "bob.mendes@email.com",
+    "subject": "I want to return my watch",
+    "body": "Hello, I received my smart watch on March 4th (order ORD-1002) but I don't like it. Can I return it for a refund? I haven't used it.",
+    "source": "email",
+    "created_at": "2024-03-22T11:05:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Deny - return window expired (15-day for high-value electronics, order 18 days ago)"
+  },
+  {
+    "ticket_id": "TKT-003",
+    "customer_email": "carol.nguyen@email.com",
+    "subject": "Coffee maker stopped working",
+    "body": "My BrewMaster coffee maker (ORD-1003) stopped heating water about 2 weeks ago. It's clearly a defect. I want a replacement or refund.",
+    "source": "ticket_queue",
+    "created_at": "2024-03-15T14:30:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Escalate as warranty claim - return window expired but warranty active (12 months)"
+  },
+  {
+    "ticket_id": "TKT-004",
+    "customer_email": "david.park@email.com",
+    "subject": "Wrong size delivered",
+    "body": "I ordered size 10 running shoes (ORD-1004) and received size 9. This is unacceptable. I need the correct size or a full refund immediately.",
+    "source": "email",
+    "created_at": "2024-03-15T10:00:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve exchange/refund - wrong item delivered, within return window"
+  },
+  {
+    "ticket_id": "TKT-005",
+    "customer_email": "emma.collins@email.com",
+    "subject": "Return request for speakers",
+    "body": "Hi team, I'd like to return the two bluetooth speakers I ordered back in December (ORD-1005). I know it might be past the return window but I've been traveling. Can you help?",
+    "source": "ticket_queue",
+    "created_at": "2024-03-15T08:45:00Z",
+    "tier": 2,
+    "status": "open",
+    "expected_resolution": "Approve return - VIP customer with pre-approved exception for returns"
+  },
+  {
+    "ticket_id": "TKT-006",
+    "customer_email": "frank.johnson@email.com",
+    "subject": "Tablet arrived damaged",
+    "body": "The tablet I ordered (ORD-1008) arrived with a cracked screen. I immediately opened the box and confirmed the damage. Can you send a replacement?",
+    "source": "email",
+    "created_at": "2024-02-05T13:20:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve replacement - damaged on arrival, full refund or replacement offered"
+  },
+  {
+    "ticket_id": "TKT-007",
+    "customer_email": "grace.lee@email.com",
+    "subject": "Changed my mind - return USB cables",
+    "body": "I bought USB cables (ORD-1007) last week but I found a better deal elsewhere. Can I return these? They're still in original packaging, unused.",
+    "source": "email",
+    "created_at": "2024-03-15T10:30:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve return - within 60-day window for electronics accessories, unused condition"
+  },
+  {
+    "ticket_id": "TKT-008",
+    "customer_email": "henry.martinez@email.com",
+    "subject": "Return request",
+    "body": "I'm returning the coffee maker I bought (ORD-1013) because I decided I don't want it. It's been 3 weeks. Is it too late?",
+    "source": "ticket_queue",
+    "created_at": "2024-01-15T12:00:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve return - within 30-day window, unused"
+  },
+  {
+    "ticket_id": "TKT-009",
+    "customer_email": "isabella.chen@email.com",
+    "subject": "Missing items from order",
+    "body": "I ordered 2 laptop stands (ORD-1016) but only received 1. Can you send the missing stand?",
+    "source": "email",
+    "created_at": "2024-03-10T14:45:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Issue refund or send replacement for missing item"
+  },
+  {
+    "ticket_id": "TKT-010",
+    "customer_email": "jack.wilson@email.com",
+    "subject": "Headphones defective after 2 weeks",
+    "body": "The wireless headphones I got (ORD-1010) work fine for 2 weeks then stop. Clearly a defect. I want a replacement under warranty.",
+    "source": "email",
+    "created_at": "2024-03-16T09:30:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve replacement under 12-month warranty"
+  },
+  {
+    "ticket_id": "TKT-011",
+    "customer_email": "alice.turner@email.com",
+    "subject": "Duplicate order received",
+    "body": "I think I was charged twice for the wireless mouse (ORD-1011). I only ordered one but my card shows two charges. Can you refund the duplicate?",
+    "source": "email",
+    "created_at": "2024-03-17T11:20:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Investigate billing - likely system error, approve refund for duplicate"
+  },
+  {
+    "ticket_id": "TKT-012",
+    "customer_email": "bob.mendes@email.com",
+    "subject": "Wrong color delivered",
+    "body": "I ordered the watch in black (ORD-1012) but received silver. I haven't opened the box. Can you send the correct color?",
+    "source": "email",
+    "created_at": "2024-03-17T14:15:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve exchange - wrong variant delivered"
+  },
+  {
+    "ticket_id": "TKT-013",
+    "customer_email": "carol.nguyen@email.com",
+    "subject": "I want to exchange product",
+    "body": "The coffee maker I bought (ORD-1003) is functional but I'm not happy with it. Can I exchange it for a different model? It's been 4 weeks.",
+    "source": "email",
+    "created_at": "2024-03-19T10:00:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Deny - return window expired (30 days), offer warranty claim alternative"
+  },
+  {
+    "ticket_id": "TKT-014",
+    "customer_email": "david.park@email.com",
+    "subject": "Shoes are uncomfortable",
+    "body": "The running shoes I ordered (ORD-1014) are uncomfortable. I wore them for a week. Can I return them?",
+    "source": "email",
+    "created_at": "2024-02-25T15:30:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Deny - footwear used, hygiene policy prevents return of worn shoes"
+  },
+  {
+    "ticket_id": "TKT-015",
+    "customer_email": "emma.collins@email.com",
+    "subject": "Bluetooth speaker not connecting",
+    "body": "One of my bluetooth speakers (ORD-1015) won't connect to my phone. I've tried everything. What should I do?",
+    "source": "ticket_queue",
+    "created_at": "2024-03-18T13:45:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Troubleshoot - provide technical support, escalate if needed"
+  },
+  {
+    "ticket_id": "TKT-016",
+    "customer_email": "frank.johnson@email.com",
+    "subject": "Returned item but still charged",
+    "body": "I returned the laptop stands (ORD-1016) 2 weeks ago but I was never refunded. Can you check on this?",
+    "source": "email",
+    "created_at": "2024-03-20T09:00:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Investigate return status and issue refund if not processed"
+  },
+  {
+    "ticket_id": "TKT-017",
+    "customer_email": "grace.lee@email.com",
+    "subject": "Product arrived late and damaged",
+    "body": "The USB cables (ORD-1017) took 2 weeks to arrive and the packaging was damaged. Cables seem okay but I'm worried about durability. What's the warranty?",
+    "source": "email",
+    "created_at": "2024-03-25T11:15:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Provide warranty info, offer replacement if customer requests"
+  },
+  {
+    "ticket_id": "TKT-018",
+    "customer_email": "henry.martinez@email.com",
+    "subject": "System error - please investigate",
+    "body": "I keep getting an error when trying to return my yoga mat (ORD-1009). The system says it's not returnable. It should be within 30 days.",
+    "source": "ticket_queue",
+    "created_at": "2024-03-21T14:30:00Z",
+    "tier": 2,
+    "status": "open",
+    "expected_resolution": "Escalate - system error, manually process return"
+  },
+  {
+    "ticket_id": "TKT-019",
+    "customer_email": "isabella.chen@email.com",
+    "subject": "Bulk return request",
+    "body": "I purchased multiple items and realized I don't need most of them. I want to return headphones, mouse, and cables from orders ORD-1019. Can I do this?",
+    "source": "email",
+    "created_at": "2024-03-17T12:45:00Z",
+    "tier": 2,
+    "status": "open",
+    "expected_resolution": "Approve items within return window, handle case-by-case"
+  },
+  {
+    "ticket_id": "TKT-020",
+    "customer_email": "jack.wilson@email.com",
+    "subject": "Refund request",
+    "body": "I want to return the wireless mouse (ORD-1020) because I changed my mind. I received it 5 days ago and haven't used it.",
+    "source": "email",
+    "created_at": "2024-03-18T10:20:00Z",
+    "tier": 1,
+    "status": "open",
+    "expected_resolution": "Approve return - within 60-day window for accessories, unused"
+  }
+]

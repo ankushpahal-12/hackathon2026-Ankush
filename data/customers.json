@@ -1,0 +1,172 @@
+[
+  {
+    "customer_id": "C001",
+    "name": "Alice Turner",
+    "email": "alice.turner@email.com",
+    "phone": "+1-415-555-0101",
+    "tier": "vip",
+    "member_since": "2019-03-12",
+    "total_orders": 47,
+    "total_spent": 6840.50,
+    "address": {
+      "street": "12 Maple Avenue",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94102"
+    },
+    "notes": "Long-standing VIP. Has had 2 refunds in the past year, both approved. Preferred customer for exceptions."
+  },
+  {
+    "customer_id": "C002",
+    "name": "Bob Mendes",
+    "email": "bob.mendes@email.com",
+    "phone": "+1-212-555-0198",
+    "tier": "standard",
+    "member_since": "2021-06-15",
+    "total_orders": 8,
+    "total_spent": 1250.00,
+    "address": {
+      "street": "456 Park Avenue",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10022"
+    },
+    "notes": "First refund request. Standard customer."
+  },
+  {
+    "customer_id": "C003",
+    "name": "Carol Nguyen",
+    "email": "carol.nguyen@email.com",
+    "phone": "+1-206-555-0134",
+    "tier": "standard",
+    "member_since": "2020-02-28",
+    "total_orders": 15,
+    "total_spent": 2150.75,
+    "address": {
+      "street": "789 Pine Street",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    },
+    "notes": "Good customer. No previous issues."
+  },
+  {
+    "customer_id": "C004",
+    "name": "David Park",
+    "email": "david.park@email.com",
+    "phone": "+1-310-555-0147",
+    "tier": "standard",
+    "member_since": "2022-01-10",
+    "total_orders": 5,
+    "total_spent": 890.00,
+    "address": {
+      "street": "101 Hollywood Boulevard",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "90028"
+    },
+    "notes": "New customer. First complaint."
+  },
+  {
+    "customer_id": "C005",
+    "name": "Emma Collins",
+    "email": "emma.collins@email.com",
+    "phone": "+1-617-555-0189",
+    "tier": "vip",
+    "member_since": "2018-11-20",
+    "total_orders": 82,
+    "total_spent": 12450.00,
+    "address": {
+      "street": "200 Beacon Street",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02108"
+    },
+    "notes": "Premium VIP. Frequent traveler. Previous return request was approved as exception."
+  },
+  {
+    "customer_id": "C006",
+    "name": "Frank Johnson",
+    "email": "frank.johnson@email.com",
+    "phone": "+1-404-555-0156",
+    "tier": "standard",
+    "member_since": "2021-08-05",
+    "total_orders": 12,
+    "total_spent": 1780.25,
+    "address": {
+      "street": "500 West Peachtree",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip": "30308"
+    },
+    "notes": "Regular customer. One previous successful return."
+  },
+  {
+    "customer_id": "C007",
+    "name": "Grace Lee",
+    "email": "grace.lee@email.com",
+    "phone": "+1-503-555-0167",
+    "tier": "gold",
+    "member_since": "2019-09-14",
+    "total_orders": 34,
+    "total_spent": 5620.80,
+    "address": {
+      "street": "1001 SW Morrison",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97204"
+    },
+    "notes": "Gold tier customer. Excellent payment history."
+  },
+  {
+    "customer_id": "C008",
+    "name": "Henry Martinez",
+    "email": "henry.martinez@email.com",
+    "phone": "+1-305-555-0178",
+    "tier": "standard",
+    "member_since": "2022-03-20",
+    "total_orders": 6,
+    "total_spent": 950.00,
+    "address": {
+      "street": "750 Biscayne Boulevard",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33132"
+    },
+    "notes": "New customer."
+  },
+  {
+    "customer_id": "C009",
+    "name": "Isabella Chen",
+    "email": "isabella.chen@email.com",
+    "phone": "+1-415-555-0189",
+    "tier": "gold",
+    "member_since": "2020-05-11",
+    "total_orders": 28,
+    "total_spent": 4280.50,
+    "address": {
+      "street": "2000 Market Street",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103"
+    },
+    "notes": "Gold customer. Positive history."
+  },
+  {
+    "customer_id": "C010",
+    "name": "Jack Wilson",
+    "email": "jack.wilson@email.com",
+    "phone": "+1-206-555-0190",
+    "tier": "standard",
+    "member_since": "2021-12-01",
+    "total_orders": 9,
+    "total_spent": 1340.00,
+    "address": {
+      "street": "3000 Sand Point Way",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98105"
+    },
+    "notes": "Standard customer. No previous issues."
+  }
+]

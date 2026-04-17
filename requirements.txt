@@ -1,0 +1,36 @@
+# Project dependencies
+
+# Core (uses Python standard library)
+Python>=3.9
+
+# Standard library modules:
+# - asyncio (async/concurrent processing)
+# - json (data serialization)
+# - logging (audit trail)
+# - dataclasses (data structures)
+# - enum (action types)
+# - datetime (timestamps)
+# - pathlib (file operations)
+# - random (failure simulation)
+# - re (regex for order ID extraction)
+# - abc (abstract base classes)
+# - os, sys, time (utilities)
+
+# OPTIONAL: LLM Integration (for enhanced reasoning)
+# Uncomment below to enable LLM-powered decision making:
+
+# Google Gemini (recommended - free tier available)
+# google-generativeai>=0.3.0
+
+# OpenAI GPT-4 / GPT-3.5
+# openai>=1.0.0
+
+# Anthropic Claude
+# anthropic>=0.7.0
+
+# Optional development dependencies:
+# pytest>=7.0  (unit testing)
+# pytest-asyncio>=0.20  (async test support)
+# black>=22.0  (code formatting)
+# pylint>=2.15  (linting)
+# mypy>=0.990  (type checking)
