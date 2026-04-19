@@ -43,6 +43,8 @@ python api_server.py
 ### Frontend & API Documentation
 - **[QUICK_START.md](docs/QUICK_START.md)** - 30-second quick reference card
 - **[FRONTEND_GUIDE.md](docs/FRONTEND_GUIDE.md)** - Complete frontend setup & usage guide
+- **[FRONTEND_USAGE.md](docs/FRONTEND_USAGE.md)** - Step-by-step user guide for the live dashboard ⭐ **START HERE**
+- **[Live Demo](https://hackathon2026-ankush-production.up.railway.app/)** - Click to access the deployed application 🚀
 - **[ARCHITECTURE.md](docs/architecture.md)** - System architecture & data flow diagrams (includes frontend)
 - **[PROJECT_INVENTORY.md](docs/PROJECT_INVENTORY.md)** - Complete file reference
 - **[IMPLEMENTATION_SUMMARY.md](docs/IMPLEMENTATION_SUMMARY.md)** - What was built
@@ -667,6 +669,64 @@ python api_server.py
 **Real-time analytics** - See results as they happen
 🔄 **Concurrent processing** - Handle 20 tickets simultaneously
 📱 **Responsive design** - Works on desktop, tablet, mobile
+
+## 🚀 Deployment & Hosting
+
+### Live Demo
+**📍 Click to access:** https://hackathon2026-ankush-production.up.railway.app/
+
+The application is live and ready to demo! No local setup required.
+
+**For step-by-step guidance on using the live dashboard:**
+👉 **[FRONTEND_USAGE.md](docs/FRONTEND_USAGE.md)** - Complete user guide with screenshots and examples
+
+### Local Development
+
+#### Option 1: Quick Start (Windows)
+```bash
+start.bat
+```
+
+#### Option 2: Manual Setup
+```bash
+pip install -r requirements.txt
+python api_server.py
+# Open: http://localhost:5000/frontend/index.html
+```
+
+### Docker Deployment
+
+For containerized deployment with Railway, Azure, or any cloud platform:
+
+**📖 [DOCKERFILE.md](docs/DOCKERFILE.md)** - Complete Docker setup guide
+- Build and run locally: `docker build && docker run`
+- Deploy to Railway automatically
+- Production-grade configuration
+- Health checks and monitoring
+
+### Architecture for Deployment
+```
+┌─────────────────┐
+│   User Browser  │  (Any device, any location)
+└────────┬────────┘
+         │ HTTPS
+         ▼
+┌─────────────────────────────────────┐
+│  Railway App Server                 │
+│  (Hosted at railway.app)            │
+├─────────────────────────────────────┤
+│ Flask API Server (api_server.py)   │
+│ - 10 REST endpoints                 │
+│ - Async processing with asyncio     │
+│ - CORS enabled for frontend         │
+└────────┬────────────────────────────┘
+         │
+         ▼
+    SupportAgent (Backend)
+    ├─ ReAct Pattern
+    ├─ Tool Calling
+    └─ Explainable Decisions
+```
 
 ## License
 
