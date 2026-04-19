@@ -78,9 +78,15 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    transform: none !important;
 }
 
 .btn-primary {
@@ -88,8 +94,24 @@ body {
     border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
     background: linear-gradient(135deg, #0a58ca 0%, #0845ad 100%);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #146c43 100%);
+    border: none;
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: linear-gradient(135deg, #146c43 0%, #0d3a1a 100%);
+}
+
+.btn-success:disabled {
+    background: linear-gradient(135deg, var(--success-color) 0%, #146c43 100%);
+    color: white;
+    opacity: 0.9;
 }
 
 /* ==================== CARDS ==================== */

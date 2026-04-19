@@ -17,8 +17,8 @@ import os
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from agent.support_agent import SupportAgent, ResolutionAction
-from tools.mock_tools import TICKETS, get_ticket
+from agent.support_agent import SupportAgent, ResolutionAction  # type: ignore
+from tools.mock_tools import TICKETS, get_ticket  # type: ignore
 
 # Setup Flask app
 app = Flask(__name__)
@@ -175,11 +175,16 @@ def process_single_ticket():
                 'success': True,
                 'data': {
                     'ticket_id': ticket_id,
+                    'customer_email': existing_entry.get('customer_email', ''),
+                    'subject': existing_entry.get('subject', ''),
                     'action': existing_entry.get('action'),
                     'confidence': existing_entry.get('confidence_score'),
                     'reasoning': existing_entry.get('reasoning'),
                     'decision_reason': existing_entry.get('decision_reason', existing_entry.get('reasoning')),  # NEW
+                    'explainable_decision': existing_entry.get('explainable_decision', {}),  # NEW: Include explainable decision
                     'tool_calls': len(existing_entry.get('tool_calls', [])),
+                    'processed_at': existing_entry.get('processed_at', ''),
+                    'accuracy_factors': existing_entry.get('accuracy_factors', {}),  # NEW
                     'note': 'Result from previous processing (not reprocessed)'
                 }
             }), 200
@@ -210,6 +215,7 @@ def process_single_ticket():
                 'action': resolution.action.value,
                 'reasoning': resolution.reasoning,
                 'decision_reason': resolution.decision_reason,  # NEW: LLM-generated reason
+                'explainable_decision': resolution.explainable_decision,  # NEW: Full explainability
                 'confidence_score': resolution.confidence_score,
                 'accuracy_factors': resolution.accuracy_factors,  # NEW: Include accuracy breakdown
                 'processing_time_ms': 0,
@@ -239,11 +245,16 @@ def process_single_ticket():
             # Store result (for API responses)
             processing_results[ticket_id] = {
                 'ticket_id': ticket_id,
+                'customer_email': ticket.get('customer_email', ''),
+                'subject': ticket.get('subject', ''),
                 'action': resolution.action.value,
                 'confidence_score': resolution.confidence_score,
                 'reasoning': resolution.reasoning,
                 'decision_reason': resolution.decision_reason,  # NEW: Include LLM reason
+                'explainable_decision': resolution.explainable_decision,  # NEW: Full explainability
                 'tool_calls': len(resolution.tool_calls),
+                'processed_at': datetime.now().isoformat(),
+                'accuracy_factors': resolution.accuracy_factors,  # NEW: Include accuracy factors
                 'timestamp': datetime.now().isoformat()
             }
             logger.info(f"✓ Added {ticket_id} to processing_results (total: {len(processing_results)})")
@@ -256,6 +267,7 @@ def process_single_ticket():
                     'confidence': resolution.confidence_score,
                     'reasoning': resolution.reasoning,
                     'decision_reason': resolution.decision_reason,  # NEW: LLM-generated reason
+                    'explainable_decision': resolution.explainable_decision,  # NEW: Full explainability
                     'tool_calls': len(resolution.tool_calls)
                 }
             }), 200
@@ -328,6 +340,8 @@ def process_batch():
                         'created_at': ticket.get('created_at', ''),
                         'action': resolution.action.value,
                         'reasoning': resolution.reasoning,
+                        'decision_reason': resolution.decision_reason,  # NEW: Include LLM reason
+                        'explainable_decision': resolution.explainable_decision,  # NEW: Full explainability
                         'confidence_score': resolution.confidence_score,
                         'accuracy_factors': resolution.accuracy_factors,  # NEW: Include accuracy breakdown
                         'processing_time_ms': int((resolution.end_time - resolution.start_time).total_seconds() * 1000) if hasattr(resolution, 'end_time') else 0,
@@ -352,9 +366,16 @@ def process_batch():
                 # Store result
                 processing_results[resolution.ticket_id] = {
                     'ticket_id': resolution.ticket_id,
+                    'customer_email': ticket.get('customer_email', ''),
+                    'subject': ticket.get('subject', ''),
                     'action': resolution.action.value,
                     'confidence_score': resolution.confidence_score,
-                    'tool_calls': len(resolution.tool_calls)
+                    'reasoning': resolution.reasoning,
+                    'decision_reason': resolution.decision_reason,  # NEW: Include LLM reason
+                    'explainable_decision': resolution.explainable_decision,  # NEW: Full explainability
+                    'tool_calls': len(resolution.tool_calls),
+                    'processed_at': datetime.now().isoformat(),
+                    'accuracy_factors': resolution.accuracy_factors  # NEW: Include accuracy factors
                 }
             
             # Save audit log to file
@@ -425,15 +446,90 @@ def get_result(ticket_id):
         }), 500
 
 
+@app.route('/api/results/<ticket_id>/explainable', methods=['GET'])
+def get_explainable_decision(ticket_id):
+    """Get full explainable decision details for a ticket"""
+    try:
+        # First check processing_results (in-memory)
+        if ticket_id in processing_results:
+            result = processing_results[ticket_id]
+            if result.get('explainable_decision'):
+                # Handle tool_calls - could be int or list
+                tool_calls = result.get('tool_calls', 0)
+                tool_calls_count = tool_calls if isinstance(tool_calls, int) else len(tool_calls) if isinstance(tool_calls, list) else 0
+                
+                return jsonify({
+                    'success': True,
+                    'data': {
+                        'ticket_id': ticket_id,
+                        'action': result.get('action'),
+                        'decision_reason': result.get('decision_reason'),
+                        'explainable_decision': result.get('explainable_decision'),
+                        'confidence_score': result.get('confidence_score'),
+                        'accuracy_factors': result.get('accuracy_factors', {}),
+                        'tool_calls': tool_calls_count
+                    }
+                }), 200
+        
+        # Check audit log file
+        audit_entry = next(
+            (entry for entry in audit_log if entry.get('ticket_id') == ticket_id),
+            None
+        )
+        
+        if audit_entry:
+            # Handle tool_calls - could be int or list
+            tool_calls = audit_entry.get('tool_calls', 0)
+            tool_calls_count = tool_calls if isinstance(tool_calls, int) else len(tool_calls) if isinstance(tool_calls, list) else 0
+            
+            return jsonify({
+                'success': True,
+                'data': {
+                    'ticket_id': ticket_id,
+                    'action': audit_entry.get('action'),
+                    'decision_reason': audit_entry.get('decision_reason'),
+                    'explainable_decision': audit_entry.get('explainable_decision', {}),
+                    'confidence_score': audit_entry.get('confidence_score'),
+                    'accuracy_factors': audit_entry.get('accuracy_factors', {}),
+                    'tool_calls': tool_calls_count
+                }
+            }), 200
+        
+        return jsonify({
+            'success': False,
+            'error': f'No results for ticket {ticket_id}'
+        }), 404
+    except Exception as e:
+        logger.error(f"Error fetching explainable decision: {str(e)}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/results', methods=['GET'])
 def get_all_results():
-    """Get all processing results"""
+    """Get results from CURRENT SESSION ONLY (not from audit log)
+    
+    BEHAVIOR:
+    - Returns only processing_results (in-memory, current session)
+    - Does NOT include audit_log (which is for permanent auditing)
+    - When server restarts, results are empty until new tickets are processed
+    - This gives a clean "fresh session" UX
+    """
     try:
+        # ONLY return current session results (processing_results)
+        # Do NOT merge with audit_log
+        results = list(processing_results.values())
+        
+        logger.info(f"Returning {len(results)} results from current session (processing_results: {len(processing_results)})")
+        
         return jsonify({
             'success': True,
             'data': {
-                'results': list(processing_results.values()),
-                'total': len(processing_results)
+                'results': results,
+                'total': len(results),
+                'note': 'Results from current session only. Audit log is available at /api/audit-log'
             }
         }), 200
     except Exception as e:
@@ -496,18 +592,47 @@ def health():
 
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
-    """Get statistics"""
+    """Get statistics from CURRENT SESSION ONLY (not from audit log)
+    
+    BEHAVIOR:
+    - Returns stats only from processing_results (in-memory, current session)
+    - Does NOT include audit_log (which is for permanent auditing)
+    - When server restarts, stats reset to empty until new tickets are processed
+    - This gives a clean "fresh session" UX
+    """
     try:
         if not processing_results:
             return jsonify({
                 'success': True,
                 'data': {
                     'total_processed': 0,
-                    'message': 'No tickets processed yet'
+                    'message': 'No tickets processed in this session yet',
+                    'by_action': {},
+                    'confidence': {
+                        'average': 0,
+                        'min': 0,
+                        'max': 0,
+                        'high_count': 0,
+                        'low_count': 0
+                    },
+                    'tool_calls': {
+                        'total': 0,
+                        'average': 0
+                    },
+                    'note': 'Stats from current session only. Audit log is available at /api/audit-log'
                 }
             }), 200
         
-        results = list(processing_results.values())
+        # ONLY use current session results (processing_results)
+        # Do NOT merge with audit_log
+        results = []
+        for ticket_id, result in processing_results.items():
+            results.append({
+                'ticket_id': ticket_id,
+                'action': result.get('action'),
+                'confidence_score': result.get('confidence_score', 0),
+                'tool_calls': result.get('tool_calls', 0) if isinstance(result.get('tool_calls'), int) else len(result.get('tool_calls', []))
+            })
         
         # Count by action
         action_counts = {}
@@ -522,17 +647,20 @@ def get_stats():
             'total_processed': len(results),
             'by_action': action_counts,
             'confidence': {
-                'average': sum(confidences) / len(confidences),
-                'min': min(confidences),
-                'max': max(confidences),
+                'average': sum(confidences) / len(confidences) if confidences else 0,
+                'min': min(confidences) if confidences else 0,
+                'max': max(confidences) if confidences else 0,
                 'high_count': sum(1 for c in confidences if c > 0.90),
                 'low_count': sum(1 for c in confidences if c < 0.70)
             },
             'tool_calls': {
                 'total': sum(r['tool_calls'] for r in results),
-                'average': sum(r['tool_calls'] for r in results) / len(results)
-            }
+                'average': sum(r['tool_calls'] for r in results) / len(results) if results else 0
+            },
+            'note': 'Stats from current session only'
         }
+        
+        logger.info(f"Stats (current session): {stats['total_processed']} tickets, {stats['by_action']}")
         
         return jsonify({
             'success': True,

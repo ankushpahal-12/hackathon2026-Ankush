@@ -35,7 +35,6 @@ env/
 .DS_Store
 
 # Project specific
-*.log
 output/*.json
 .pytest_cache/
 .coverage

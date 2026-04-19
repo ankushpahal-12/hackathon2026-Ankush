@@ -188,6 +188,149 @@ class GeminiProvider(LLMProvider):
             logger.error(f"Gemini decision reason generation failed: {e}")
             return "Decision made based on policy compliance."
     
+    def generate_explainable_decision(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Generate a fully explainable decision response with reasoning chain
+        
+        Args:
+            context: Complete decision context including ticket, customer, order, tools, policies
+            
+        Returns:
+            {
+                'decision': 'APPROVE'|'DENY'|'ESCALATE',
+                'primary_reason': str,
+                'reasoning_chain': [str],  # Step-by-step reasoning
+                'policy_factors': [str],   # Policies applied
+                'risk_factors': [str],     # Risk considerations
+                'tool_justification': [str], # Why each tool was called
+                'confidence_breakdown': {
+                    'evidence_quality': float,
+                    'policy_clarity': float,
+                    'customer_history': float,
+                    'overall': float
+                },
+                'warnings': [str],  # Any caveats or concerns
+                'follow_up_actions': [str]  # Recommended next steps
+            }
+        """
+        if not self.enabled:
+            return self._fallback_explainable_decision(context)
+        
+        try:
+            prompt = self._build_explainable_decision_prompt(context)
+            response = self.client.generate_content(prompt)
+            result = self._parse_explainable_response(response.text, context)
+            logger.info(f"Generated explainable decision: {result['decision']}")
+            return result
+        except Exception as e:
+            logger.error(f"Explainable decision generation failed: {e}")
+            return self._fallback_explainable_decision(context)
+    
+    def _parse_explainable_response(self, llm_response: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        """Parse LLM response into structured explainable decision"""
+        sections = {
+            'decision': 'ESCALATE',
+            'primary_reason': 'Unable to determine',
+            'reasoning_chain': [],
+            'policy_factors': [],
+            'risk_factors': [],
+            'tool_justification': [],
+            'confidence_breakdown': {
+                'evidence_quality': 0.5,
+                'policy_clarity': 0.5,
+                'customer_history': 0.5,
+                'overall': 0.5
+            },
+            'warnings': [],
+            'follow_up_actions': []
+        }
+        
+        # Parse structured sections from LLM response
+        try:
+            lines = llm_response.split('\n')
+            current_section = None
+            
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                
+                # Detect section headers
+                if 'DECISION:' in line.upper():
+                    decision = line.split(':')[-1].strip().upper()
+                    if decision in ['APPROVE', 'DENY', 'ESCALATE']:
+                        sections['decision'] = decision
+                elif 'PRIMARY REASON:' in line.upper():
+                    sections['primary_reason'] = line.split(':', 1)[-1].strip()
+                elif 'REASONING CHAIN:' in line.upper():
+                    current_section = 'reasoning_chain'
+                elif 'POLICY FACTORS:' in line.upper():
+                    current_section = 'policy_factors'
+                elif 'RISK FACTORS:' in line.upper():
+                    current_section = 'risk_factors'
+                elif 'TOOL JUSTIFICATION:' in line.upper():
+                    current_section = 'tool_justification'
+                elif 'WARNINGS:' in line.upper():
+                    current_section = 'warnings'
+                elif 'FOLLOW-UP ACTIONS:' in line.upper():
+                    current_section = 'follow_up_actions'
+                elif line.startswith(('-', '•', '*')) and current_section:
+                    # Add bullet point to current section
+                    content = line.lstrip('-•* ').strip()
+                    if content:
+                        sections[current_section].append(content)
+        
+        except Exception as parse_error:
+            logger.warning(f"Failed to parse explainable response: {parse_error}")
+        
+        # Ensure minimum structure
+        if not sections['reasoning_chain']:
+            sections['reasoning_chain'] = [sections['primary_reason']]
+        
+        if not sections['policy_factors']:
+            sections['policy_factors'] = ['Policy compliance verified']
+        
+        return sections
+    
+    def _fallback_explainable_decision(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """Fallback explainable decision when LLM is disabled"""
+        eligibility = context.get('eligibility', {})
+        customer = context.get('customer', {})
+        order = context.get('order', {})
+        
+        decision = 'APPROVE' if eligibility.get('eligible') else 'DENY'
+        
+        return {
+            'decision': decision,
+            'primary_reason': eligibility.get('reason', 'Policy review completed'),
+            'reasoning_chain': [
+                f"1. Verified customer tier: {customer.get('tier', 'standard')}",
+                f"2. Checked refund window: {eligibility.get('days_since_delivery', 'Unknown')} days since delivery",
+                f"3. Reviewed order status: ${order.get('total_price', 0)} order",
+                f"4. Applied policy rules: {eligibility.get('reason', 'Standard processing')}"
+            ],
+            'policy_factors': [
+                "30-day return window applied",
+                "Customer tier benefits verified",
+                "Order history reviewed"
+            ],
+            'risk_factors': [],
+            'tool_justification': [
+                "Customer lookup: Verified customer identity and history",
+                "Order verification: Confirmed order details and timeline",
+                "Policy check: Applied company refund policy",
+                "Eligibility assessment: Determined refund eligibility"
+            ],
+            'confidence_breakdown': {
+                'evidence_quality': 0.9,
+                'policy_clarity': 0.95,
+                'customer_history': 0.85,
+                'overall': 0.9
+            },
+            'warnings': [],
+            'follow_up_actions': [f"Process {'refund' if decision == 'APPROVE' else 'denial'} decision"]
+        }
+    
     def _build_decision_reason_prompt(self, context: Dict[str, Any]) -> str:
         """Build prompt for generating decision reason"""
         action = context.get('action', 'UNKNOWN')
@@ -205,6 +348,97 @@ CUSTOMER TIER: {customer.get('tier', 'standard')}
 DAYS SINCE DELIVERY: {eligibility.get('days_since_delivery', 'Unknown')}
 
 Write a concise reason suitable for display on the ticket. Be empathetic but clear."""
+    
+    def _build_explainable_decision_prompt(self, context: Dict[str, Any]) -> str:
+        """Build comprehensive prompt for explainable decision"""
+        ticket = context.get('ticket', {})
+        customer = context.get('customer', {})
+        order = context.get('order', {})
+        eligibility = context.get('eligibility', {})
+        tools_used = context.get('tools_used', [])
+        
+        return f"""You are an autonomous support agent making a ticket resolution decision. 
+Your response MUST be completely explainable and transparent.
+
+TICKET DETAILS:
+- ID: {ticket.get('ticket_id', 'N/A')}
+- Subject: {ticket.get('subject', 'N/A')}
+- Description: {ticket.get('body', '')[:250] if ticket.get('body') else 'N/A'}
+- Customer: {customer.get('name', 'N/A')} ({customer.get('email', 'N/A')})
+
+CUSTOMER PROFILE:
+- Tier: {customer.get('tier', 'standard')}
+- Total Orders: {customer.get('total_orders', 0)}
+- Previous Refunds: {customer.get('refund_count', 0)}
+- Account Since: {customer.get('account_created', 'N/A')}
+
+ORDER INFORMATION:
+- Order ID: {order.get('order_id', 'N/A')}
+- Product: {order.get('product_name', 'N/A')}
+- Price: ${order.get('total_price', 0)}
+- Purchase Date: {order.get('purchase_date', 'N/A')}
+- Delivery Date: {order.get('delivery_date', 'N/A')}
+- Days Since Delivery: {eligibility.get('days_since_delivery', 'Unknown')}
+
+POLICY RULES:
+- 30-day return window
+- Full refund within 7 days
+- 50% refund 7-30 days
+- Premium tier: Extended 60-day window
+- No refunds after 30 days (standard tier) or 60 days (premium)
+
+ELIGIBILITY ASSESSMENT:
+- Eligible: {eligibility.get('eligible', 'Unknown')}
+- Reason: {eligibility.get('reason', 'Unknown')}
+
+TOOLS USED:
+{chr(10).join([f'- {tool}' for tool in tools_used]) if tools_used else '- Customer lookup, Order verification, Policy check, Eligibility assessment'}
+
+REQUIRED OUTPUT FORMAT:
+Provide your response in this exact structure:
+
+DECISION: [APPROVE|DENY|ESCALATE]
+
+PRIMARY REASON: [One sentence summarizing the decision]
+
+REASONING CHAIN:
+- [Step 1: First reasoning point]
+- [Step 2: Second reasoning point]
+- [Step 3: Third reasoning point]
+- [Step 4: Any additional reasoning]
+
+POLICY FACTORS:
+- [How policy X applies to this case]
+- [How policy Y affects this decision]
+- [Any policy exceptions or special cases]
+
+RISK FACTORS:
+- [Any risks or concerns]
+- [Patterns to monitor]
+(Leave empty if no risks)
+
+TOOL JUSTIFICATION:
+- [Why tool X was necessary]
+- [What tool Y verified]
+- [How tool Z informed the decision]
+
+CONFIDENCE BREAKDOWN:
+- Evidence Quality: [0.0-1.0] (Completeness of data)
+- Policy Clarity: [0.0-1.0] (How clear policies apply)
+- Customer History: [0.0-1.0] (Quality of customer data)
+- Overall: [0.0-1.0] (Final confidence score)
+
+WARNINGS:
+- [Any caveats or concerns to flag]
+- [Edge cases identified]
+(Leave empty if no warnings)
+
+FOLLOW-UP ACTIONS:
+- [Immediate next step]
+- [Any escalation needed]
+- [Customer communication needed]
+
+Be thorough but concise. Every statement must be justified by the facts above."""
     
     def _build_reasoning_prompt(self, context: Dict[str, Any]) -> str:
         """Build prompt for ticket reasoning"""

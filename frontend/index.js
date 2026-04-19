@@ -36,6 +36,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Check health
     await checkHealth();
     
+    // Load initial data
+    await loadTickets();
+    await loadResults();
+    await updateStats();
+    
+    console.log('✓ Initial data loaded');
+    
     // Set auto-refresh
     setInterval(async () => {
         await loadResults();
@@ -125,17 +132,15 @@ async function processSingleTicket(ticketId) {
         if (data.success) {
             showAlert(`Ticket ${ticketId} processed successfully!`, 'success');
             
-            // Update state
-            state.results[ticketId] = {
-                ticket_id: ticketId,
-                action: data.data.action,
-                confidence_score: data.data.confidence,
-                tool_calls: data.data.tool_calls
-            };
+            // Reload ALL results from API (includes audit log + current session)
+            await loadResults();
             
-            renderTickets();  // Re-render to show updated status
+            // Re-render everything
+            renderTickets();
             renderResults();
             await updateStats();
+            
+            console.log('✓ Single ticket processed and results reloaded');
         } else {
             showAlert(`Error processing ticket: ${data.error}`, 'danger');
         }
@@ -143,10 +148,7 @@ async function processSingleTicket(ticketId) {
         console.error('Error processing ticket:', error);
         showAlert('Error processing ticket', 'danger');
     } finally {
-        // Add small delay before hiding to ensure modal closes properly
-        setTimeout(() => {
-            hideLoadingModal();
-        }, 500);
+        setTimeout(() => hideLoadingModal(), 150);
     }
 }
 
@@ -184,20 +186,21 @@ async function processAllTickets() {
             
             // Reload results and update stats
             await loadResults();
-            renderTickets();  // Re-render tickets to show updated status
+            renderTickets();  // Re-render tickets to show updated status with disabled buttons
             await updateStats();
+            
+            // Hide loading modal with delay to ensure cleanup
+            setTimeout(() => hideLoadingModal(), 150);
         } else {
             showAlert(`Error: ${data.error}`, 'danger');
+            setTimeout(() => hideLoadingModal(), 150);
         }
     } catch (error) {
         console.error('Error processing tickets:', error);
         showAlert('Error processing tickets', 'danger');
+        setTimeout(() => hideLoadingModal(), 150);
     } finally {
         state.isProcessing = false;
-        // Add small delay before hiding to ensure modal closes properly
-        setTimeout(() => {
-            hideLoadingModal();
-        }, 500);
     }
 }
 
@@ -241,14 +244,10 @@ async function processOneByOne() {
                 const data = await response.json();
                 
                 if (data.success) {
-                    // Update state with result
-                    state.results[ticket.ticket_id] = {
-                        ticket_id: ticket.ticket_id,
-                        action: data.data.action,
-                        confidence_score: data.data.confidence,
-                        decision_reason: data.data.decision_reason,  // NEW: Store LLM reason
-                        tool_calls: data.data.tool_calls
-                    };
+                    // Reload results from API after each ticket (includes audit log)
+                    await loadResults();
+                    renderTickets();
+                    renderResults();
                     
                     console.log(`✓ Processed ${ticket.ticket_id}`);
                 } else {
@@ -262,24 +261,21 @@ async function processOneByOne() {
             await new Promise(resolve => setTimeout(resolve, 500));
         }
         
-        // Final update
-        await loadResults();
-        renderTickets();
+        // Final update with latest stats
         await updateStats();
         
         showAlert(
             `✓ Processed ${processedCount} tickets one by one!`,
             'success'
         );
+        
+        console.log('✓ All one-by-one processing complete');
     } catch (error) {
         console.error('Error in one-by-one processing:', error);
         showAlert('Error processing tickets', 'danger');
     } finally {
         state.isProcessing = false;
-        // Add small delay before hiding to ensure modal closes properly
-        setTimeout(() => {
-            hideLoadingModal();
-        }, 500);
+        setTimeout(() => hideLoadingModal(), 150);
     }
 }
 
@@ -366,8 +362,10 @@ function renderTickets() {
                         </div>
                     ` : ''}
                     
-                    <button class="btn btn-sm btn-primary w-100" onclick="processSingleTicket('${ticket.ticket_id}')">
-                        <i class="fas fa-play"></i> Process
+                    <button class="btn btn-sm ${isProcessed ? 'btn-success disabled' : 'btn-primary'} w-100" 
+                            onclick="${isProcessed ? '' : `processSingleTicket('${ticket.ticket_id}')`}"
+                            ${isProcessed ? 'disabled' : ''}>
+                        ${isProcessed ? '<i class="fas fa-check-circle"></i> Processed' : '<i class="fas fa-play"></i> Process'}
                     </button>
                 </div>
             </div>
@@ -430,6 +428,9 @@ function renderResults() {
                     <div class="btn-group btn-group-sm" role="group">
                         <button class="btn btn-outline-primary" onclick="viewDecisionReason('${result.ticket_id}', '${result.decision_reason ? result.decision_reason.replace(/'/g, "&apos;") : result.action}')">
                             <i class="fas fa-lightbulb"></i> Reason
+                        </button>
+                        <button class="btn btn-outline-info" onclick="viewExplainableDecision('${result.ticket_id}')">
+                            <i class="fas fa-brain"></i> Explainable
                         </button>
                         <button class="btn btn-outline-secondary" onclick="viewDetails('${result.ticket_id}')">
                             <i class="fas fa-eye"></i> Details
@@ -552,8 +553,25 @@ function showLoadingModal(title, details) {
  * Hide loading modal
  */
 function hideLoadingModal() {
-    if (loadingModalInstance) {
-        loadingModalInstance.hide();
+    try {
+        // Hide the Bootstrap modal instance
+        if (loadingModalInstance) {
+            loadingModalInstance.hide();
+        }
+        
+        // Remove modal backdrop if it exists
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+        
+        // Re-enable body scroll
+        document.body.style.overflow = '';
+        document.body.classList.remove('modal-open');
+        
+        console.log('✓ Loading modal hidden successfully');
+    } catch (error) {
+        console.error('Error hiding modal:', error);
     }
 }
 
@@ -622,6 +640,203 @@ function viewDecisionReason(ticketId, reason) {
     modal.addEventListener('hidden.bs.modal', () => {
         modal.remove();
     });
+}
+
+/**
+ * View full explainable decision with reasoning chain - NEW
+ */
+async function viewExplainableDecision(ticketId) {
+    try {
+        const ticket = state.tickets.find(t => t.ticket_id === ticketId);
+        const result = state.results[ticketId];
+        
+        if (!ticket || !result) {
+            showAlert('Ticket or result not found', 'danger');
+            return;
+        }
+        
+        // Fetch explainable decision from API
+        const response = await fetch(`${API_BASE_URL}/results/${ticketId}/explainable`);
+        const data = await response.json();
+        
+        let explainableContent = '';
+        
+        if (data.success && data.data.explainable_decision) {
+            const decision = data.data.explainable_decision;
+            
+            // Build reasoning chain HTML
+            let reasoningChainHTML = '';
+            if (decision.reasoning_chain && decision.reasoning_chain.length > 0) {
+                reasoningChainHTML = `
+                    <div class="mb-3">
+                        <strong>📋 Reasoning Chain:</strong>
+                        <ul class="mb-0 mt-2">
+                            ${decision.reasoning_chain.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Build policy factors HTML
+            let policyFactorsHTML = '';
+            if (decision.policy_factors && decision.policy_factors.length > 0) {
+                policyFactorsHTML = `
+                    <div class="mb-3">
+                        <strong>📋 Policy Factors:</strong>
+                        <ul class="mb-0 mt-2">
+                            ${decision.policy_factors.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Build risk factors HTML
+            let riskFactorsHTML = '';
+            if (decision.risk_factors && decision.risk_factors.length > 0) {
+                riskFactorsHTML = `
+                    <div class="mb-3">
+                        <strong>⚠️ Risk Factors:</strong>
+                        <ul class="mb-0 mt-2" style="color: #dc3545;">
+                            ${decision.risk_factors.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Build tool justification HTML
+            let toolJustificationHTML = '';
+            if (decision.tool_justification && decision.tool_justification.length > 0) {
+                toolJustificationHTML = `
+                    <div class="mb-3">
+                        <strong>🔧 Tool Justification:</strong>
+                        <ul class="mb-0 mt-2">
+                            ${decision.tool_justification.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Build confidence breakdown HTML
+            let confidenceHTML = '';
+            if (decision.confidence_breakdown) {
+                const conf = decision.confidence_breakdown;
+                confidenceHTML = `
+                    <div class="mb-3">
+                        <strong>📊 Confidence Breakdown:</strong>
+                        <div class="mt-2">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Evidence Quality:</span>
+                                <strong>${(conf.evidence_quality * 100).toFixed(0)}%</strong>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar" style="width: ${conf.evidence_quality * 100}%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Policy Clarity:</span>
+                                <strong>${(conf.policy_clarity * 100).toFixed(0)}%</strong>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar" style="width: ${conf.policy_clarity * 100}%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Customer History:</span>
+                                <strong>${(conf.customer_history * 100).toFixed(0)}%</strong>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar" style="width: ${conf.customer_history * 100}%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <span><strong>Overall Confidence:</strong></span>
+                                <strong style="color: #28a745; font-size: 1.1em;">${(conf.overall * 100).toFixed(0)}%</strong>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Build warnings HTML
+            let warningsHTML = '';
+            if (decision.warnings && decision.warnings.length > 0) {
+                warningsHTML = `
+                    <div class="alert alert-warning mb-3">
+                        <strong>⚠️ Warnings:</strong>
+                        <ul class="mb-0 mt-2">
+                            ${decision.warnings.map(w => `<li>${w}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Build follow-up actions HTML
+            let followUpHTML = '';
+            if (decision.follow_up_actions && decision.follow_up_actions.length > 0) {
+                followUpHTML = `
+                    <div class="mb-0">
+                        <strong>✅ Follow-up Actions:</strong>
+                        <ul class="mb-0 mt-2">
+                            ${decision.follow_up_actions.map(a => `<li>${a}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            explainableContent = `
+                <div class="alert alert-info mb-3">
+                    <strong>Decision:</strong> <span class="badge bg-${decision.decision === 'APPROVE' ? 'success' : decision.decision === 'DENY' ? 'danger' : 'warning'}">${decision.decision}</span><br>
+                    <strong>Primary Reason:</strong> ${decision.primary_reason}
+                </div>
+                ${reasoningChainHTML}
+                ${policyFactorsHTML}
+                ${riskFactorsHTML}
+                ${toolJustificationHTML}
+                ${confidenceHTML}
+                ${warningsHTML}
+                ${followUpHTML}
+            `;
+        } else {
+            explainableContent = '<p class="text-muted">No detailed explanation available for this decision. The decision was made using the standard rules engine.</p>';
+        }
+        
+        // Create modal
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-brain"></i> Explainable AI Decision</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 pb-3 border-bottom">
+                            <strong>Ticket:</strong> ${ticketId}<br>
+                            <strong>Customer:</strong> ${ticket.customer_email}<br>
+                            <strong>Subject:</strong> ${ticket.subject}
+                        </div>
+                        ${explainableContent}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        const bsModal = new bootstrap.Modal(modal);
+        bsModal.show();
+        
+        // Clean up when hidden
+        modal.addEventListener('hidden.bs.modal', () => {
+            modal.remove();
+        });
+    } catch (error) {
+        console.error('Error fetching explainable decision:', error);
+        showAlert('Error loading explainable decision details', 'danger');
+    }
 }
 
 function viewDetails(ticketId) {

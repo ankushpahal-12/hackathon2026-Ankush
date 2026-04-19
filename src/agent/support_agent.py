@@ -106,6 +106,7 @@ class TicketResolution:
     processing_time_ms: float = 0.0
     accuracy_factors: Dict[str, float] = field(default_factory=dict)  # NEW: Accuracy improvement tracking
     decision_reason: str = ""  # NEW: LLM-generated human-readable reason
+    explainable_decision: Dict[str, Any] = field(default_factory=dict)  # NEW: Complete explainability structure
     
     def to_dict(self):
         return {
@@ -114,6 +115,7 @@ class TicketResolution:
             "reasoning": self.reasoning,
             "confidence_score": self.confidence_score,
             "decision_reason": self.decision_reason,  # NEW: Include LLM reason
+            "explainable_decision": self.explainable_decision,  # NEW: Full explanation structure
             "tool_calls": [tc.to_dict() for tc in self.tool_calls],
             "customer_message": self.customer_message,
             "escalation_case_id": self.escalation_case_id,
@@ -395,25 +397,42 @@ class SupportAgent:
             logger.info(f"  Confidence: {confidence*100:.1f}% (calibrated from tool results)")
             logger.info(f"  Accuracy Factors: {accuracy_factors}")
             
-            # Generate LLM-powered decision reason (NEW)
-            logger.info(f"\n[{ticket_id}] GENERATING LLM DECISION REASON")
-            decision_reason = ""
-            if self.use_llm and self.llm_reasoner and self.llm_reasoner.enabled:
+            # Generate EXPLAINABLE decision with complete reasoning chain (NEW)
+            logger.info(f"\n[{ticket_id}] GENERATING EXPLAINABLE DECISION")
+            explainable_decision = {}
+            decision_reason = reasoning  # Fallback
+            
+            if self.use_llm and self.llm_reasoner:
                 try:
-                    decision_reason_context = {
-                        'action': action.value,
-                        'confidence': confidence,
-                        'eligibility': eligibility_dict,  # Use safe dict version
+                    explainable_context = {
+                        'ticket': ticket,
                         'customer': customer,
-                        'accuracy_factors': accuracy_factors
+                        'order': order,
+                        'eligibility': eligibility_dict,
+                        'tools_used': [tc.name for tc in tool_calls],
+                        'action': action.value
                     }
-                    decision_reason = self.llm_reasoner.generate_decision_reason(decision_reason_context)
-                    logger.info(f"  ✓ LLM Reason: {decision_reason[:80]}...")
+                    explainable_decision = self.llm_reasoner.generate_explainable_decision(explainable_context)
+                    decision_reason = explainable_decision.get('primary_reason', reasoning)
+                    logger.info(f"  ✓ Decision: {explainable_decision['decision']}")
+                    logger.info(f"  ✓ Confidence Breakdown: {explainable_decision['confidence_breakdown']['overall']:.0%}")
+                    logger.info(f"  ✓ Reasoning chain with {len(explainable_decision.get('reasoning_chain', []))} steps")
+                    if explainable_decision.get('warnings'):
+                        logger.warning(f"  ⚠ Warnings: {', '.join(explainable_decision['warnings'][:2])}")
                 except Exception as e:
-                    logger.warning(f"  ✗ LLM reason generation failed: {e}")
-                    decision_reason = reasoning  # Fallback to technical reasoning
+                    logger.warning(f"  ✗ Explainable decision generation failed: {e}")
+                    # Fallback to basic explainable structure
+                    explainable_decision = self._generate_fallback_explainable_decision(
+                        ticket_id, action, reasoning, customer, order, eligibility_dict, tool_calls, confidence
+                    )
+                    decision_reason = reasoning
             else:
-                decision_reason = reasoning  # Fallback if LLM not available
+                logger.info(f"  ℹ LLM disabled, generating fallback explainable decision")
+                # Generate fallback explainable decision when LLM not available
+                explainable_decision = self._generate_fallback_explainable_decision(
+                    ticket_id, action, reasoning, customer, order, eligibility_dict, tool_calls, confidence
+                )
+                decision_reason = reasoning
             
             # ====== RETURN RESOLUTION ======
             processing_time = (time.time() - start_time) * 1000
@@ -424,6 +443,7 @@ class SupportAgent:
                 reasoning=reasoning,
                 confidence_score=confidence,
                 decision_reason=decision_reason,  # NEW: Include LLM-generated reason
+                explainable_decision=explainable_decision,  # NEW: Full explainability structure
                 tool_calls=tool_calls,
                 customer_message=customer_message,
                 classification=classification,
@@ -669,6 +689,154 @@ Unfortunately, this order is outside our standard {window}-day return window ({d
 Best regards,
 ShopWave Support Team"""
     
+    def _generate_fallback_explainable_decision(
+        self,
+        ticket_id: str,
+        action: ResolutionAction,
+        reasoning: str,
+        customer: Dict[str, Any],
+        order: Dict[str, Any],
+        eligibility: Dict[str, Any],
+        tool_calls: List[ToolCall],
+        confidence: float
+    ) -> Dict[str, Any]:
+        """
+        Generate fallback explainable decision when LLM is not available
+        
+        Provides a structured explanation of the decision based on facts and policies
+        """
+        try:
+            # Extract key information
+            days_since = eligibility.get('days_since_delivery', 0)
+            window = eligibility.get('return_window_days', 30)
+            eligible = eligibility.get('eligible', False)
+            customer_tier = customer.get('tier', 'standard')
+            order_price = order.get('total_price', 0)
+            
+            # Build reasoning chain
+            reasoning_chain = [
+                f"1. Verified customer: {customer['name']} ({customer_tier} tier, {customer.get('total_orders', 0)} orders)",
+                f"2. Reviewed order: {order['order_id']} for ${order_price:.2f}",
+                f"3. Calculated timeline: {days_since} days since delivery (window: {window} days)",
+                f"4. Applied policies: {eligibility.get('reason', 'Standard processing')}"
+            ]
+            
+            # Build policy factors
+            policy_factors = [
+                f"{window}-day return window policy applied",
+                f"Customer tier ({customer_tier}) eligibility rules reviewed",
+                "Order delivery status verified"
+            ]
+            
+            # Build tool justification
+            tool_justification = []
+            for tc in tool_calls:
+                if tc.name == "get_customer":
+                    tool_justification.append(f"get_customer: Verified customer identity and membership tier ({customer_tier})")
+                elif tc.name == "get_order":
+                    tool_justification.append(f"get_order: Confirmed order details and delivery date ({days_since} days ago)")
+                elif tc.name == "check_refund_eligibility":
+                    tool_justification.append(f"check_refund_eligibility: Applied return policy (eligible: {eligible})")
+                elif tc.name == "send_reply":
+                    tool_justification.append(f"send_reply: Notified customer of decision")
+            
+            # Determine decision text
+            if action == ResolutionAction.APPROVE_REFUND:
+                decision_text = "APPROVE"
+                primary_reason = f"Order is eligible for refund within the {window}-day return window"
+                confidence_breakdown = {
+                    'evidence_quality': 0.95,
+                    'policy_clarity': 0.95,
+                    'customer_history': 0.85 if customer_tier in ['vip', 'gold'] else 0.75,
+                    'overall': confidence
+                }
+                follow_up = [
+                    f"Refund of ${order_price:.2f} issued to customer",
+                    "Refund will arrive in 5-7 business days",
+                    "No further action required"
+                ]
+            elif action == ResolutionAction.DENY:
+                decision_text = "DENY"
+                primary_reason = f"Order is outside the {window}-day return window ({days_since} days since delivery)"
+                confidence_breakdown = {
+                    'evidence_quality': 0.90,
+                    'policy_clarity': 0.95,
+                    'customer_history': 0.70,
+                    'overall': confidence
+                }
+                follow_up = [
+                    "Denial sent to customer with explanation",
+                    "Offered escalation for quality concerns",
+                    "Suggested warranty review if applicable"
+                ]
+                policy_factors.append(f"Return period expired ({days_since} > {window} days)")
+            else:
+                decision_text = "ESCALATE"
+                primary_reason = "Order requires manual review by support team"
+                confidence_breakdown = {
+                    'evidence_quality': 0.70,
+                    'policy_clarity': 0.75,
+                    'customer_history': 0.65,
+                    'overall': confidence
+                }
+                follow_up = [
+                    "Escalated to human support agent",
+                    "Priority set based on ticket urgency",
+                    "Agent will contact customer within 24 hours"
+                ]
+            
+            # Identify any warnings
+            warnings = []
+            if days_since >= window - 5 and days_since < window:
+                warnings.append(f"Request is near return window deadline ({days_since}/{window} days)")
+            if order_price > 200:
+                warnings.append(f"High-value order (${order_price:.2f}) - may require additional review")
+            if customer_tier == 'standard' and action == ResolutionAction.DENY:
+                warnings.append("Standard tier customer - no leniency exceptions available")
+            
+            # Build complete explainable decision
+            explainable_decision = {
+                'decision': decision_text,
+                'primary_reason': primary_reason,
+                'reasoning_chain': reasoning_chain,
+                'policy_factors': policy_factors,
+                'risk_factors': [],
+                'tool_justification': tool_justification if tool_justification else ["Tools: Customer lookup, Order verification, Policy check, Eligibility assessment"],
+                'confidence_breakdown': confidence_breakdown,
+                'warnings': warnings,
+                'follow_up_actions': follow_up,
+                'generated_at': datetime.now().isoformat(),
+                'generation_method': 'fallback_rule_based'
+            }
+            
+            logger.info(f"  ✓ Fallback decision generated: {decision_text}")
+            logger.info(f"  ✓ Primary reason: {primary_reason}")
+            logger.info(f"  ✓ Confidence: {confidence:.0%}")
+            
+            return explainable_decision
+            
+        except Exception as e:
+            logger.error(f"Error generating fallback explainable decision: {e}")
+            # Return minimal explainable decision
+            return {
+                'decision': action.value.upper(),
+                'primary_reason': reasoning,
+                'reasoning_chain': [reasoning],
+                'policy_factors': ['Policy review completed'],
+                'risk_factors': [],
+                'tool_justification': ['Tools executed to gather decision context'],
+                'confidence_breakdown': {
+                    'evidence_quality': 0.5,
+                    'policy_clarity': 0.5,
+                    'customer_history': 0.5,
+                    'overall': confidence
+                },
+                'warnings': ['Fallback generation - limited explainability'],
+                'follow_up_actions': ['Process decision', 'Notify customer'],
+                'generated_at': datetime.now().isoformat(),
+                'generation_method': 'fallback_minimal'
+            }
+
     async def _escalate_ticket(
         self,
         ticket_id: str,

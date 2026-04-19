@@ -1,0 +1,1762 @@
+2026-04-19 17:30:58,791 - llm.reasoner - WARNING - GOOGLE_API_KEY not set. Gemini reasoning disabled.
+2026-04-19 17:30:58,791 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:30:58,791 - llm.reasoner - WARNING - No LLM providers available. Reasoning disabled.
+2026-04-19 17:30:58,791 - agent.support_agent - WARNING - ⚠ LLM reasoning disabled (no valid API keys)
+2026-04-19 17:30:58,804 - __main__ - INFO - Loaded 20 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:30:58,804 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:30:58,811 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:30:58,811 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:30:59,086 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.36.65.73:5000
+2026-04-19 17:30:59,087 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-19 17:30:59,199 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:31:14,697 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:31:14,697 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:31:14,697 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:31:14,697 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:31:14,699 - __main__ - INFO - Loaded 20 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:31:14,699 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:31:14,699 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:31:14,699 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:31:14,712 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:31:14,734 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:32:04,228 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:32:04,230 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:32:04,642 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:32:07,863 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:32:07,865 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:32:07,865 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:32:07,865 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:32:07,867 - __main__ - INFO - Loaded 20 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:32:07,869 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:32:07,873 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:32:07,873 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:32:07,890 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:32:07,905 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:32:18,075 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:18] "GET / HTTP/1.1" 200 -
+2026-04-19 17:32:18,122 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:18] "GET /frontend/index.css HTTP/1.1" 200 -
+2026-04-19 17:32:18,412 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:18] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:32:19,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:19] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:32:19,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-19 17:32:20,357 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:20] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:32:24,394 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:24] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:24,624 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:24] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:30,218 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:30] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:30,379 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:32:30,382 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:32:30,809 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:32:34,626 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:32:34,626 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:32:34,626 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:32:34,626 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:32:34,635 - __main__ - INFO - Loaded 20 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:32:34,635 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:32:34,635 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:32:34,635 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:32:34,653 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:32:34,668 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:32:34,747 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:34] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:35,051 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:35] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:35,375 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:35] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:39,634 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:39] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:39,965 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:39] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:41,717 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:41] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:32:42,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:42] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:32:42,134 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:42] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:32:42,484 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:42] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:32:44,490 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:44] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:32:47,819 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:48,067 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:48] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:53,117 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:53] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:53,443 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:53] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:32:58,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:58] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:32:58,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:32:58] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:02,502 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:02,817 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:04,144 - __main__ - INFO - Ticket TKT-001 already processed. Returning existing result.
+2026-04-19 17:33:04,146 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:04] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:33:04,476 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:04] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:07,496 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:07,814 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:10,774 - __main__ - INFO - Ticket TKT-013 already processed. Returning existing result.
+2026-04-19 17:33:10,774 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:10] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:33:11,095 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:12,507 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:12,817 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:17,505 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:17,819 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:20,752 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:20] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:33:21,061 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:21] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-19 17:33:22,500 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:22,825 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:27,497 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:27,835 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:30,833 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:30] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:33:31,134 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:31] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:33:31,247 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:31] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:33:31,568 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:31] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:33:32,724 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:32] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:33:35,348 - __main__ - INFO - Skipping 20 already-processed tickets: ['TKT-001', 'TKT-002', 'TKT-003', 'TKT-004', 'TKT-005', 'TKT-006', 'TKT-007', 'TKT-008', 'TKT-009', 'TKT-010', 'TKT-011', 'TKT-012', 'TKT-013', 'TKT-014', 'TKT-015', 'TKT-016', 'TKT-017', 'TKT-018', 'TKT-019', 'TKT-020']
+2026-04-19 17:33:35,352 - __main__ - INFO - All 20 tickets already processed. Returning existing results.
+2026-04-19 17:33:35,356 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:35] "POST /api/process/batch HTTP/1.1" 200 -
+2026-04-19 17:33:35,598 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:35] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:35,726 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:35] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:36,593 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:36,907 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:41,256 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:41] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:33:41,564 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:41] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-19 17:33:41,838 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:41,884 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:46,594 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:46,915 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:52,048 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:52,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:33:57,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:33:57,357 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:33:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:02,072 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:02,395 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:07,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:07,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:12,051 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:12,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:17,047 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:17,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:22,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:22,350 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:26,583 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:26,920 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:27,618 - __main__ - INFO - Ticket TKT-019 already processed. Returning existing result.
+2026-04-19 17:34:27,619 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:27] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:34:27,940 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:31,583 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:31,899 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:33,272 - __main__ - INFO - Ticket TKT-013 already processed. Returning existing result.
+2026-04-19 17:34:33,272 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:33] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:34:33,608 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:33] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:36,587 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:36,915 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:40,556 - __main__ - INFO - Ticket TKT-020 already processed. Returning existing result.
+2026-04-19 17:34:40,557 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:40] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:34:40,874 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:40] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:41,580 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:41,906 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:47,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:47,357 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:52,050 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:52,386 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:34:57,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:34:57,351 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:34:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:02,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:02,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:06,579 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:06,923 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:12,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:12,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:17,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:17,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:22,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:22,364 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:27,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:27,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:32,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:32,349 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:37,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:37,351 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:42,037 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:42,349 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:47,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:47,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:52,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:52,406 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:35:57,051 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:35:57,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:35:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:02,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:02,363 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:07,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:07,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:23,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:23,393 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:50,648 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:50] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:50,963 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:50] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:51,579 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:51,892 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:36:52,698 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:52] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:36:53,004 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:53] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:36:53,070 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:53] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:36:53,405 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:53] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:36:55,547 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:55] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:36:58,723 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:58] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:36:59,000 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:36:59] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:04,108 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:04] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:04,432 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:04] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:09,165 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:09] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:09,496 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:09] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:14,094 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:14] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:14,416 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:14] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:19,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:19] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:19,345 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:19] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:24,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:24] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:24,353 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:24] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:28,457 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:28] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:28,773 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:28] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:30,996 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:30] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:37:31,302 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:31] "GET /frontend/index.css HTTP/1.1" 200 -
+2026-04-19 17:37:31,372 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:31] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:37:31,706 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:31] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:37:34,345 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:34] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:37:37,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:37,295 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:37,376 - __main__ - INFO - Ticket TKT-002 already processed. Returning existing result.
+2026-04-19 17:37:37,376 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:37] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:37:37,654 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:41,731 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:42,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:47,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:47,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:52,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:52,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:37:57,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:37:57,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:37:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:02,048 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:02,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:06,734 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:07,102 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:12,050 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:12,373 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:16,787 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:17,111 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:21,733 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:22,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:26,733 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:27,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:31,738 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:32,067 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:36,721 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:37,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:42,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:42,361 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:47,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:47,366 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:52,732 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:53,211 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:53] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:38:57,169 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:38:57,624 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:38:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:02,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:02,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:07,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:07,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:12,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:12,366 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:17,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:17,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:22,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:22,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:27,048 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:27,363 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:31,737 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:32,067 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:35,029 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:35] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:39:35,336 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:35] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:39:35,430 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:35] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:39:35,756 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:35] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:39:41,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:41,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:46,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:46,360 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:51,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:51,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:39:56,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:39:56,349 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:39:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:01,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:01,364 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:05,690 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:05] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:40:06,002 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:06] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:40:06,053 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:06] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:40:06,385 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:06] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:40:07,212 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:07] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:40:09,399 - __main__ - INFO - Ticket TKT-005 already processed. Returning existing result.
+2026-04-19 17:40:09,399 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:09] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:40:09,655 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:09] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:11,402 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:11,721 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:16,401 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:16,728 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:21,408 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:21,729 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:21] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:26,410 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:26,769 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:32,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:32,381 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:37,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:37,379 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:42,029 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:42,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:47,029 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:47,347 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:52,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:52,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:40:57,037 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:40:57,396 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:40:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:02,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:02,364 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:06,797 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:07,113 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:12,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:12,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:17,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:17,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:22,047 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:22,376 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:27,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:27,349 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:32,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:32,363 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:37,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:37,356 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:41,398 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:41,719 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:46,401 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:46,733 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:52,029 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:52,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:41:57,047 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:41:57,377 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:41:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:02,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:02,346 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:07,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:07,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:12,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:12,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:13,977 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:42:13,982 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:42:14,393 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:42:17,727 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:42:17,727 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:42:17,727 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:42:17,727 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:42:17,727 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:42:17,727 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:42:17,727 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:42:17,748 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:42:17,760 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:42:17,844 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:42:17,844 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:17,844 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:22,319 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:42:22,321 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:42:22,321 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:42:22,389 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:42:22,389 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:22,640 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:23,561 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:42:26,994 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:42:26,994 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:42:26,994 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:42:26,994 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:42:26,994 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:42:27,004 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:42:27,004 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:42:27,019 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:42:27,035 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:42:27,356 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:42:27,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:27,605 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:32,045 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:42:32,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:32,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:36,397 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:42:36,397 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:36,715 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:36,936 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:42:36,938 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:42:36,938 - agent.support_agent - INFO - TICKET: TKT-002
+2026-04-19 17:42:36,940 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:42:36,940 - agent.support_agent - INFO - 
+[TKT-002] OBSERVATION: Ingesting ticket
+2026-04-19 17:42:36,940 - agent.support_agent - INFO -   Subject: I want to return my watch
+2026-04-19 17:42:36,940 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:42:36,940 - agent.support_agent - INFO - 
+[TKT-002] CLASSIFY: Analyzing...
+2026-04-19 17:42:36,942 - agent.support_agent - INFO -   Category: refund_request
+2026-04-19 17:42:36,945 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:42:36,947 - agent.support_agent - INFO -   Order ID: ORD-1002
+2026-04-19 17:42:36,948 - agent.support_agent - INFO - 
+[TKT-002] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:42:36,948 - agent.support_agent - INFO - 
+  [1/5] get_customer('bob.mendes@email.com')
+2026-04-19 17:42:36,948 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:42:36,950 - agent.support_agent - INFO -        ✓ Bob Mendes (Tier: standard)
+2026-04-19 17:42:36,952 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1002')
+2026-04-19 17:42:36,953 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:42:36,954 - agent.support_agent - INFO -        ✓ Product: P002 ($349.99)
+2026-04-19 17:42:36,954 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1002')
+2026-04-19 17:42:37,168 - agent.support_agent - WARNING -    ⚠ ToolTimeout: Tool request timed out after 5 seconds
+2026-04-19 17:42:37,168 - agent.support_agent - INFO -    ↻ Retry in 0.10s (1/2)
+2026-04-19 17:42:37,272 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:42:37,272 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:42:37,274 - agent.support_agent - INFO -        ✗ INELIGIBLE: 773 days since delivery vs 15-day window for high_value_electronics
+2026-04-19 17:42:37,274 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:42:37,280 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-002')
+2026-04-19 17:42:38,163 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:42:38,163 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:42:38,163 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:42:38,163 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-002-1776600758
+2026-04-19 17:42:38,169 - agent.support_agent - INFO - 
+[TKT-002] DECISION
+2026-04-19 17:42:38,170 - agent.support_agent - DEBUG -    Confidence penalty for 1 tool errors: -0.15
+2026-04-19 17:42:38,170 - agent.support_agent - DEBUG -    Confidence penalty for 1 retries: -0.05
+2026-04-19 17:42:38,170 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:42:38,384 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:42:38,384 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:42:38,384 - agent.support_agent - INFO -    Calibrated confidence: 0.60
+2026-04-19 17:42:38,390 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:42:38,390 - agent.support_agent - INFO -   Confidence: 60.0% (calibrated from tool results)
+2026-04-19 17:42:38,390 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 0.8, 'customer_tier_factor': 0.8, 'confidence_score': 0.6, 'tool_call_count': 5}
+2026-04-19 17:42:38,392 - agent.support_agent - INFO - 
+[TKT-002] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:42:38,396 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:42:38,396 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:42:38,396 - agent.support_agent - INFO - ✓ RESOLVED (1458ms)
+2026-04-19 17:42:38,398 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:42:38,398 - __main__ - INFO - ✓ Added TKT-002 to audit_log (total: 1)
+2026-04-19 17:42:38,400 - __main__ - INFO - Saved audit log with 1 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:42:38,400 - __main__ - INFO - ✓ Added TKT-002 to processing_results (total: 1)
+2026-04-19 17:42:38,400 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:38] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:42:38,417 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:42:38,417 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:38] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:42,359 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:42:42,361 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:42,628 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:42:42,631 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:47,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:42:47,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:47,365 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:42:47,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:50,910 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:50] "GET /api/results/TKT-002/explainable HTTP/1.1" 200 -
+2026-04-19 17:42:51,721 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:42:51,723 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:51,997 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:42:51,997 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:42:56,409 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:42:56,417 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:42:56,790 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:42:56,799 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:42:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:01,404 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:01,411 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:01,739 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:01,739 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:06,437 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:06,438 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:07,493 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:07,493 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:12,049 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:12,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:12,372 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:12,372 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:17,039 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:17,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:17,363 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:17,363 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:22,047 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:22,047 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:22,377 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:22,377 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:27,044 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:27,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:27,376 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:27,376 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:32,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:32,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:32,352 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:32,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:37,061 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:37,074 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:37,399 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:37,399 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:42,034 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:42,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:42,355 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:42,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:47,032 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:47,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:47,359 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:47,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:52,046 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:52,053 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:52,378 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:52,378 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:43:57,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:43:57,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:43:57,353 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:43:57,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:43:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:02,044 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:44:02,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:02,379 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:02,379 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:08,902 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:44:08,902 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:08] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:09,221 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:09,221 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:09] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:11,403 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:44:11,403 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:11,739 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:11,739 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:16,395 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:44:16,395 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:16,729 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:16,729 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:22,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:44:22,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:22] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:22,355 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:22,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:24,085 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\src\\agent\\support_agent.py', reloading
+2026-04-19 17:44:27,296 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:44:30,839 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:44:30,839 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:44:30,839 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:44:30,839 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:44:30,839 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:44:30,839 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:44:30,860 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:44:30,860 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:44:30,872 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:44:30,880 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:44:30,952 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:30,952 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:30] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:30,977 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:30,977 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:30] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:32,346 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:32,346 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:32,602 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:32,602 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:37,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:37,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:37,353 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:37,353 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:42,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:42,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:42,361 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:42,361 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:47,046 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:47,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:47,371 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:47,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:52,044 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:52,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:52,380 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:52,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:44:53,061 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\cacheprovider.py', reloading
+2026-04-19 17:44:53,123 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\fixtures.py', reloading
+2026-04-19 17:44:53,219 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\capture.py', reloading
+2026-04-19 17:44:53,291 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\doctest.py', reloading
+2026-04-19 17:44:53,343 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\junitxml.py', reloading
+2026-04-19 17:44:53,391 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\legacypath.py', reloading
+2026-04-19 17:44:53,443 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\logging.py', reloading
+2026-04-19 17:44:53,517 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\monkeypatch.py', reloading
+2026-04-19 17:44:53,557 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\recwarn.py', reloading
+2026-04-19 17:44:53,605 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pytest\\tmpdir.py', reloading
+2026-04-19 17:44:53,905 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:44:57,312 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:44:57,312 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:44:57,312 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:44:57,312 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:44:57,312 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:44:57,312 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:44:57,319 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:44:57,319 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:44:57,332 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:44:57,349 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:44:57,430 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:44:57,430 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:44:57,611 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:44:57,611 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:44:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:02,034 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:02,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:02,358 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:02,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:02,524 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\src\\agent\\support_agent.py', reloading
+2026-04-19 17:45:02,525 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\src\\agent\\support_agent.py', reloading
+2026-04-19 17:45:03,203 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:45:06,918 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:45:06,918 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:45:06,918 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:45:06,918 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:45:06,921 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:45:06,922 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:45:06,929 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:45:06,929 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:45:06,950 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:45:06,970 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:45:07,342 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:07,347 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:07,607 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:07,612 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:12,043 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:12,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:12,359 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:12,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:17,033 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:17,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:17] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:17,355 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:17,356 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:23,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:23,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:23,368 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:23,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:26,021 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:26] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:45:26,317 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:26] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:45:26,379 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:26] "GET /frontend/index.js HTTP/1.1" 200 -
+2026-04-19 17:45:26,714 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:26] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:45:26,958 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:26] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:45:27,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:27,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:27,278 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:27,278 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:32,301 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:32,301 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:32] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:32,625 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:32,625 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:33,368 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:33,369 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:33,370 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:33,798 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:45:37,888 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:45:37,890 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:45:37,890 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:45:37,890 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:45:37,890 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:45:37,890 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:45:37,896 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:45:37,898 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:45:37,912 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:45:37,928 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:45:38,344 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:38,344 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:38] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:38,599 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:38,599 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:38] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:42,573 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:42,575 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:43,040 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 0)
+2026-04-19 17:45:43,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:43] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:43,350 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:45:43,350 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:43] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:43,767 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:45:47,241 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:45:47,241 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:45:47,241 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:45:47,241 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:45:47,241 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:45:47,241 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:45:47,241 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:45:47,258 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:45:47,275 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:45:48,042 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:45:48,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:48] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:45:48,367 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:48] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:45:51,161 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:51,163 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:45:51,249 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:51] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:45:51,551 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:51] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:45:51,690 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:51] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:45:53,836 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:45:59,273 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:45:59,273 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:45:59,275 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:45:59,275 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:45:59,277 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:45:59,283 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:45:59,283 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:45:59,300 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:45:59,322 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:45:59,425 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:59] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:45:59,427 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:59] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:45:59,743 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:45:59] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:46:00,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:00] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:46:00,377 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:46:00,377 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:00] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:00,637 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:00] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:00,913 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:46:00,914 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:46:00,915 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:46:01,941 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:46:07,045 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:46:07,045 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:46:07,045 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:46:07,045 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:46:07,045 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:46:07,060 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:46:07,062 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:46:07,087 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:46:07,110 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:46:07,301 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:46:07,301 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:07,308 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:08,892 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:08] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:46:08,934 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:08] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:46:09,144 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:09] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:46:09,467 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:09] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:46:09,735 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:09] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:46:09,796 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:46:09,796 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:09] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:10,082 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:10] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:14,851 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:46:14,851 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:46:14,855 - agent.support_agent - INFO - TICKET: TKT-007
+2026-04-19 17:46:14,855 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:46:14,855 - agent.support_agent - INFO - 
+[TKT-007] OBSERVATION: Ingesting ticket
+2026-04-19 17:46:14,857 - agent.support_agent - INFO -   Subject: Changed my mind - return USB cables
+2026-04-19 17:46:14,857 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:46:14,859 - agent.support_agent - INFO - 
+[TKT-007] CLASSIFY: Analyzing...
+2026-04-19 17:46:14,859 - agent.support_agent - INFO -   Category: return_request
+2026-04-19 17:46:14,859 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:46:14,861 - agent.support_agent - INFO -   Order ID: ORD-1007
+2026-04-19 17:46:14,865 - agent.support_agent - INFO - 
+[TKT-007] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:46:14,865 - agent.support_agent - INFO - 
+  [1/5] get_customer('grace.lee@email.com')
+2026-04-19 17:46:14,867 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:46:14,869 - agent.support_agent - INFO -        ✓ Grace Lee (Tier: gold)
+2026-04-19 17:46:14,869 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1007')
+2026-04-19 17:46:14,869 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:46:14,869 - agent.support_agent - INFO -        ✓ Product: P007 ($49.98)
+2026-04-19 17:46:14,872 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1007')
+2026-04-19 17:46:14,873 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:46:14,873 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:46:14,873 - agent.support_agent - INFO -        ✗ INELIGIBLE: 768 days since delivery vs 60-day window for electronics_accessories
+2026-04-19 17:46:14,875 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:46:14,875 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-007')
+2026-04-19 17:46:15,222 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:46:15,227 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:46:15,227 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:46:15,227 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-007-1776600975
+2026-04-19 17:46:15,227 - agent.support_agent - INFO - 
+[TKT-007] DECISION
+2026-04-19 17:46:15,227 - agent.support_agent - DEBUG -    Confidence bonus for gold customer: +0.05
+2026-04-19 17:46:15,227 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:46:15,409 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:46:15,409 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:15] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:15,551 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:46:15,551 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:46:15,551 - agent.support_agent - INFO -    Calibrated confidence: 0.70
+2026-04-19 17:46:15,555 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:46:15,556 - agent.support_agent - INFO -   Confidence: 70.0% (calibrated from tool results)
+2026-04-19 17:46:15,556 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 1.0, 'customer_tier_factor': 0.8, 'confidence_score': 0.7, 'tool_call_count': 4}
+2026-04-19 17:46:15,556 - agent.support_agent - INFO - 
+[TKT-007] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:46:15,556 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:46:15,560 - agent.support_agent - INFO -   ✓ Fallback decision generated: DENY
+2026-04-19 17:46:15,560 - agent.support_agent - INFO -   ✓ Primary reason: Order is outside the 60-day return window (768 days since delivery)
+2026-04-19 17:46:15,560 - agent.support_agent - INFO -   ✓ Confidence: 70%
+2026-04-19 17:46:15,561 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:46:15,561 - agent.support_agent - INFO - ✓ RESOLVED (711ms)
+2026-04-19 17:46:15,563 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:46:15,563 - __main__ - INFO - ✓ Added TKT-007 to audit_log (total: 1)
+2026-04-19 17:46:15,572 - __main__ - INFO - Saved audit log with 1 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:46:15,574 - __main__ - INFO - ✓ Added TKT-007 to processing_results (total: 1)
+2026-04-19 17:46:15,577 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:15] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:46:15,734 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:15,734 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:15] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:15,897 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:15,897 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:15] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:16,224 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:16,224 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:20,093 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:20,095 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:20] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:20,421 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:20,424 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:20] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:21,185 - __main__ - ERROR - Error fetching explainable decision: object of type 'int' has no len()
+2026-04-19 17:46:21,185 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:21] "[35m[1mGET /api/results/TKT-007/explainable HTTP/1.1[0m" 500 -
+2026-04-19 17:46:25,396 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:25,396 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:25] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:25,667 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:25,667 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:25] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:31,040 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:31,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:31,358 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:31,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:34,212 - __main__ - ERROR - Error fetching explainable decision: object of type 'int' has no len()
+2026-04-19 17:46:34,212 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:34] "[35m[1mGET /api/results/TKT-007/explainable HTTP/1.1[0m" 500 -
+2026-04-19 17:46:35,403 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:35,409 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:35] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:35,662 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:35,662 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:35] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:40,095 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:40,095 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:40] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:40,427 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:40,427 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:40] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:46,031 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:46,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:46,357 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:46,359 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:51,039 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:51,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:51,363 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:51,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:46:56,045 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:46:56,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:46:56,377 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:46:56,377 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:46:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:01,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:01,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:01,367 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:01,367 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:06,033 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:06,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:06,156 - llm.reasoner - WARNING - GOOGLE_API_KEY not set. Gemini reasoning disabled.
+2026-04-19 17:47:06,156 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:47:06,156 - llm.reasoner - WARNING - No LLM providers available. Reasoning disabled.
+2026-04-19 17:47:06,156 - agent.support_agent - WARNING - ⚠ LLM reasoning disabled (no valid API keys)
+2026-04-19 17:47:06,156 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:47:06,156 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:47:06,156 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:47:06,156 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:47:06,207 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.36.65.73:5000
+2026-04-19 17:47:06,207 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-19 17:47:06,222 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:47:06,357 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:06,357 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:09,513 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:47:09,513 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:47:09,513 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:47:09,513 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:47:09,513 - __main__ - INFO - Loaded 1 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:47:09,513 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:47:09,521 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:47:09,521 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:47:09,537 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:47:09,556 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:47:11,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:11,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:11,377 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:11,377 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:16,048 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:16,048 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:16,373 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:16,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:21,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:21,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:21,371 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:21,373 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:21] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:26,044 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:26,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:26,374 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:26,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:28,230 - __main__ - INFO - Ticket TKT-007 already processed. Returning existing result.
+2026-04-19 17:47:28,233 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:28] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:47:31,039 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:31,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:31,355 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:31,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:36,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:36,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:36,374 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:36,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:47:41,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:47:41,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:47:41,373 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:47:41,373 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:47:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:08,116 - llm.reasoner - WARNING - GOOGLE_API_KEY not set. Gemini reasoning disabled.
+2026-04-19 17:48:08,116 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:48:08,121 - llm.reasoner - WARNING - No LLM providers available. Reasoning disabled.
+2026-04-19 17:48:08,122 - agent.support_agent - WARNING - ⚠ LLM reasoning disabled (no valid API keys)
+2026-04-19 17:48:08,122 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:48:08,126 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:48:08,126 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:48:08,162 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.36.65.73:5000
+2026-04-19 17:48:08,164 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-19 17:48:08,179 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:48:11,319 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:48:11,319 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:48:11,321 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:48:11,322 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:48:11,322 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:48:11,326 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:48:11,326 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:48:11,341 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:48:11,359 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:48:20,540 - __main__ - INFO - Ticket TKT-007 already processed. Returning existing result.
+2026-04-19 17:48:20,540 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:20] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:48:23,046 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:23,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:23,370 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:23,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:34,430 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:34,430 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:34] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:34,694 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:34,694 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:34] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:35,109 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:35,109 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:35] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:35,426 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:35,428 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:35] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:41,046 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:41,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:41,374 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:41,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:46,038 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:46,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:46,362 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:46,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:51,045 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:51,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:51,370 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:51,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:48:56,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:48:56,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:48:56,358 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:48:56,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:48:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:01,036 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:01,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:01,354 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:01,354 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:06,044 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:06,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:06,366 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:06,366 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:10,743 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:10,744 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:10] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:11,075 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:11,075 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:16,040 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:16,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:16,365 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:16,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:21,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:21,041 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:21,358 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:21,360 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:21] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:23,361 - llm.reasoner - WARNING - GOOGLE_API_KEY not set. Gemini reasoning disabled.
+2026-04-19 17:49:23,361 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:49:23,361 - llm.reasoner - WARNING - No LLM providers available. Reasoning disabled.
+2026-04-19 17:49:23,361 - agent.support_agent - WARNING - ⚠ LLM reasoning disabled (no valid API keys)
+2026-04-19 17:49:23,361 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:49:23,367 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:49:23,369 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:49:23,399 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.36.65.73:5000
+2026-04-19 17:49:23,399 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-19 17:49:23,415 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:49:26,040 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:26,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:26,355 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:26,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:26,676 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:49:26,676 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:49:26,676 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:49:26,676 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:49:26,676 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:49:26,687 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:49:26,687 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:49:26,701 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:49:26,715 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:49:31,043 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:31,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:31,374 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:31,374 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:36,038 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:36,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:36,354 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:36,354 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:41,041 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:41,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:41,371 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:41,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:46,039 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:49:46,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:46,365 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:49:46,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:46,577 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:46,577 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:46,577 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:46,577 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:46,577 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:47,514 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:49:49,117 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:49:51,041 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:49:51,041 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:49:51,041 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:49:51,041 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:49:51,041 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:49:51,041 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:49:51,041 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:49:51,071 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:49:51,092 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:49:51,241 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:51,242 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:49:52,598 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:49:52,897 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:49:52,897 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:49:52,897 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:49:52,897 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:49:52,900 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:49:52,906 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:49:52,906 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:49:52,920 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:49:52,939 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:49:53,021 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:49:53,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:53] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:53,064 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:53] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:49:56,170 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:49:56,170 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:49:56,170 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:49:56,170 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:49:56,170 - __main__ - INFO - Audit log file not found. Will create on first save.
+2026-04-19 17:49:56,185 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:49:56,185 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:49:56,201 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:49:56,218 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:49:56,355 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:49:56,356 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:49:56,605 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:49:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:01,053 - __main__ - INFO - Returning 0 results (audit_log: 0, processing_results: 0)
+2026-04-19 17:50:01,059 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:01,389 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:03,304 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:50:03,304 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:50:03,304 - agent.support_agent - INFO - TICKET: TKT-007
+2026-04-19 17:50:03,309 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:50:03,309 - agent.support_agent - INFO - 
+[TKT-007] OBSERVATION: Ingesting ticket
+2026-04-19 17:50:03,309 - agent.support_agent - INFO -   Subject: Changed my mind - return USB cables
+2026-04-19 17:50:03,309 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:50:03,311 - agent.support_agent - INFO - 
+[TKT-007] CLASSIFY: Analyzing...
+2026-04-19 17:50:03,311 - agent.support_agent - INFO -   Category: return_request
+2026-04-19 17:50:03,311 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:50:03,311 - agent.support_agent - INFO -   Order ID: ORD-1007
+2026-04-19 17:50:03,311 - agent.support_agent - INFO - 
+[TKT-007] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:50:03,311 - agent.support_agent - INFO - 
+  [1/5] get_customer('grace.lee@email.com')
+2026-04-19 17:50:03,311 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:50:03,311 - agent.support_agent - INFO -        ✓ Grace Lee (Tier: gold)
+2026-04-19 17:50:03,311 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1007')
+2026-04-19 17:50:03,311 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:50:03,317 - agent.support_agent - INFO -        ✓ Product: P007 ($49.98)
+2026-04-19 17:50:03,318 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1007')
+2026-04-19 17:50:03,318 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:50:03,318 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:50:03,318 - agent.support_agent - INFO -        ✗ INELIGIBLE: 768 days since delivery vs 60-day window for electronics_accessories
+2026-04-19 17:50:03,320 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:50:03,320 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-007')
+2026-04-19 17:50:03,922 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:50:03,922 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:50:03,922 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:50:03,922 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-007-1776601203
+2026-04-19 17:50:03,922 - agent.support_agent - INFO - 
+[TKT-007] DECISION
+2026-04-19 17:50:03,922 - agent.support_agent - DEBUG -    Confidence bonus for gold customer: +0.05
+2026-04-19 17:50:03,922 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:50:04,078 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:50:04,090 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -    Calibrated confidence: 0.70
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   Confidence: 70.0% (calibrated from tool results)
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 1.0, 'customer_tier_factor': 0.8, 'confidence_score': 0.7, 'tool_call_count': 4}
+2026-04-19 17:50:04,090 - agent.support_agent - INFO - 
+[TKT-007] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:50:04,090 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   ✓ Fallback decision generated: DENY
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   ✓ Primary reason: Order is outside the 60-day return window (768 days since delivery)
+2026-04-19 17:50:04,090 - agent.support_agent - INFO -   ✓ Confidence: 70%
+2026-04-19 17:50:04,090 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:50:04,090 - agent.support_agent - INFO - ✓ RESOLVED (786ms)
+2026-04-19 17:50:04,090 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:50:04,097 - __main__ - INFO - ✓ Added TKT-007 to audit_log (total: 1)
+2026-04-19 17:50:04,101 - __main__ - INFO - Saved audit log with 1 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:50:04,101 - __main__ - INFO - ✓ Added TKT-007 to processing_results (total: 1)
+2026-04-19 17:50:04,105 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:04] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:50:06,038 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:06,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:06,353 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:06,353 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:10,341 - __main__ - INFO - Ticket TKT-007 already processed. Returning existing result.
+2026-04-19 17:50:10,341 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:10] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:50:11,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:11,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:11,379 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:11,379 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:23,042 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:23,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:23,372 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:23,372 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:25,746 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:25,751 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:25] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:26,082 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:26,084 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:27,561 - __main__ - ERROR - Error fetching explainable decision: object of type 'int' has no len()
+2026-04-19 17:50:27,563 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:27] "[35m[1mGET /api/results/TKT-007/explainable HTTP/1.1[0m" 500 -
+2026-04-19 17:50:30,410 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:30,410 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:30] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:30,669 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:30] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:50:30,736 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:30] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:50:30,963 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:30] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:50:31,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:31] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:50:31,061 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:31] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:50:31,293 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:31,298 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:31,382 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:31,382 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:37,043 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:37,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:37,366 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:37,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:42,037 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:42,037 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:42] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:42,369 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:42,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:47,028 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:47,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:47,354 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:47,354 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:47] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:51,408 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:51,408 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:51,742 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:51] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:50:51,959 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:51] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:50:51,995 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:51] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:50:52,110 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:52] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:50:52,121 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:52] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:50:52,328 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:52,328 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:52] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:52,444 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:52,444 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:52] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:50:57,230 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:57] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:50:57,538 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:57] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:50:57,606 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:57] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:50:57,926 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:57] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:50:58,211 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:58] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:50:58,242 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:50:58,244 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:58] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:50:58,543 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:50:58,543 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:50:58] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:03,560 - __main__ - INFO - Returning 1 results (audit_log: 1, processing_results: 1)
+2026-04-19 17:51:03,560 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:03] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:03,884 - __main__ - INFO - Stats: 1 tickets, {'deny': 1}
+2026-04-19 17:51:03,884 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:03] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:05,208 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:51:05,226 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:51:05,230 - agent.support_agent - INFO - TICKET: TKT-014
+2026-04-19 17:51:05,230 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:51:05,232 - agent.support_agent - INFO - 
+[TKT-014] OBSERVATION: Ingesting ticket
+2026-04-19 17:51:05,232 - agent.support_agent - INFO -   Subject: Shoes are uncomfortable
+2026-04-19 17:51:05,232 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:51:05,232 - agent.support_agent - INFO - 
+[TKT-014] CLASSIFY: Analyzing...
+2026-04-19 17:51:05,234 - agent.support_agent - INFO -   Category: return_request
+2026-04-19 17:51:05,235 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:51:05,236 - agent.support_agent - INFO -   Order ID: ORD-1014
+2026-04-19 17:51:05,236 - agent.support_agent - INFO - 
+[TKT-014] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:51:05,243 - agent.support_agent - INFO - 
+  [1/5] get_customer('david.park@email.com')
+2026-04-19 17:51:05,243 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:51:05,243 - agent.support_agent - INFO -        ✓ David Park (Tier: standard)
+2026-04-19 17:51:05,243 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1014')
+2026-04-19 17:51:05,243 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:51:05,243 - agent.support_agent - INFO -        ✓ Product: P004 ($119.99)
+2026-04-19 17:51:05,243 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1014')
+2026-04-19 17:51:05,243 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:51:05,243 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:51:05,243 - agent.support_agent - INFO -        ✗ INELIGIBLE: 791 days since delivery vs 30-day window for footwear
+2026-04-19 17:51:05,243 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:51:05,243 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-014')
+2026-04-19 17:51:05,398 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:51:05,400 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:51:05,400 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:51:05,400 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-014-1776601265
+2026-04-19 17:51:05,400 - agent.support_agent - INFO - 
+[TKT-014] DECISION
+2026-04-19 17:51:05,400 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:51:05,761 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:51:05,761 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:51:05,761 - agent.support_agent - INFO -    Calibrated confidence: 0.70
+2026-04-19 17:51:05,761 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:51:05,761 - agent.support_agent - INFO -   Confidence: 70.0% (calibrated from tool results)
+2026-04-19 17:51:05,761 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 1.0, 'customer_tier_factor': 0.8, 'confidence_score': 0.7, 'tool_call_count': 4}
+2026-04-19 17:51:05,761 - agent.support_agent - INFO - 
+[TKT-014] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:51:05,761 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:51:05,761 - agent.support_agent - INFO -   ✓ Fallback decision generated: DENY
+2026-04-19 17:51:05,770 - agent.support_agent - INFO -   ✓ Primary reason: Order is outside the 30-day return window (791 days since delivery)
+2026-04-19 17:51:05,770 - agent.support_agent - INFO -   ✓ Confidence: 70%
+2026-04-19 17:51:05,770 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:51:05,772 - agent.support_agent - INFO - ✓ RESOLVED (544ms)
+2026-04-19 17:51:05,772 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:51:05,772 - __main__ - INFO - ✓ Added TKT-014 to audit_log (total: 2)
+2026-04-19 17:51:05,780 - __main__ - INFO - Saved audit log with 2 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:51:05,780 - __main__ - INFO - ✓ Added TKT-014 to processing_results (total: 2)
+2026-04-19 17:51:05,782 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:05] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:51:06,104 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:06,107 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:06,352 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:06,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:08,555 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:08,563 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:08] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:08,890 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:08,893 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:08] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:10,121 - __main__ - ERROR - Error fetching explainable decision: object of type 'int' has no len()
+2026-04-19 17:51:10,121 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:10] "[35m[1mGET /api/results/TKT-014/explainable HTTP/1.1[0m" 500 -
+2026-04-19 17:51:13,891 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:13,892 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:13] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:14,140 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:14,141 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:14] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:19,036 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:19,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:19] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:19,365 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:19,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:19] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:24,038 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:24,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:24] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:24,372 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:24,372 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:24] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:29,041 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:29,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:29] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:29,356 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:29,356 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:29] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:34,038 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:34,038 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:34] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:34,369 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:34,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:34] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:39,039 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:39,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:39] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:39,370 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:39,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:39] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:44,037 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 2)
+2026-04-19 17:51:44,040 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:44] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:44,366 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:44,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:44] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:47,271 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:51:47,271 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:51:48,511 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:51:50,516 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:51:51,938 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:51:51,938 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:51:51,940 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:51:51,940 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:51:51,940 - __main__ - INFO - Loaded 2 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:51:51,940 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:51:51,947 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:51:51,947 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:51:51,953 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:51:51,976 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:51:53,808 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:51:53,808 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:51:53,808 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:51:53,808 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:51:53,808 - __main__ - INFO - Loaded 2 existing audit entries from C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:51:53,808 - __main__ - INFO - Audit log loaded for reference only. Results display will be empty until new tickets are processed.
+2026-04-19 17:51:53,812 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:51:53,812 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:51:53,828 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:51:53,844 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:51:53,921 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:51:53,921 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:53] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:53,938 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:53,938 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:53] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:54,347 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:51:54,347 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:54] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:54,602 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:54,602 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:54] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:51:58,562 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:51:58,562 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:58] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:51:58,892 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:51:58,892 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:51:58] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:00,642 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:00] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:52:00,948 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:00] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:52:01,021 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:01] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:52:01,341 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:01] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:52:01,595 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:01] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:52:01,654 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:52:01,654 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:01,916 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:52:01,920 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:03,982 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:52:03,990 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:52:04,013 - agent.support_agent - INFO - TICKET: TKT-013
+2026-04-19 17:52:04,013 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:52:04,014 - agent.support_agent - INFO - 
+[TKT-013] OBSERVATION: Ingesting ticket
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -   Subject: I want to exchange product
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:52:04,014 - agent.support_agent - INFO - 
+[TKT-013] CLASSIFY: Analyzing...
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -   Category: return_request
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -   Order ID: ORD-1003
+2026-04-19 17:52:04,014 - agent.support_agent - INFO - 
+[TKT-013] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:52:04,014 - agent.support_agent - INFO - 
+  [1/5] get_customer('carol.nguyen@email.com')
+2026-04-19 17:52:04,014 - agent.support_agent - WARNING -    ⚠ ToolMalformedResponse: Tool returned malformed JSON data
+2026-04-19 17:52:04,014 - agent.support_agent - INFO -    ↻ Retry in 0.10s (1/2)
+2026-04-19 17:52:04,129 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:52:04,129 - agent.support_agent - INFO -        ✓ Carol Nguyen (Tier: standard)
+2026-04-19 17:52:04,129 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1003')
+2026-04-19 17:52:04,621 - agent.support_agent - WARNING -    ⚠ ToolTimeout: Tool request timed out after 5 seconds
+2026-04-19 17:52:04,621 - agent.support_agent - INFO -    ↻ Retry in 0.10s (1/2)
+2026-04-19 17:52:04,734 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:52:04,736 - agent.support_agent - INFO -        ✓ Product: P003 ($129.99)
+2026-04-19 17:52:04,736 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1003')
+2026-04-19 17:52:05,180 - agent.support_agent - WARNING -    ⚠ ToolTimeout: Tool request timed out after 5 seconds
+2026-04-19 17:52:05,180 - agent.support_agent - INFO -    ↻ Retry in 0.10s (1/2)
+2026-04-19 17:52:05,296 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:52:05,296 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:52:05,296 - agent.support_agent - INFO -        ✗ INELIGIBLE: 791 days since delivery vs 30-day window for home_appliances
+2026-04-19 17:52:05,296 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:52:05,296 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-013')
+2026-04-19 17:52:05,922 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:52:05,922 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:52:05,922 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:52:05,922 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-013-1776601325
+2026-04-19 17:52:05,922 - agent.support_agent - INFO - 
+[TKT-013] DECISION
+2026-04-19 17:52:05,929 - agent.support_agent - DEBUG -    Confidence penalty for 3 tool errors: -0.45
+2026-04-19 17:52:05,929 - agent.support_agent - DEBUG -    Confidence penalty for 3 retries: -0.15
+2026-04-19 17:52:05,930 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:52:06,103 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:52:06,103 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:52:06,103 - agent.support_agent - INFO -    Calibrated confidence: 0.43
+2026-04-19 17:52:06,111 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:52:06,112 - agent.support_agent - INFO -   Confidence: 42.5% (calibrated from tool results)
+2026-04-19 17:52:06,112 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 0.5714285714285714, 'customer_tier_factor': 0.8, 'confidence_score': 0.42500000000000004, 'tool_call_count': 7}
+2026-04-19 17:52:06,112 - agent.support_agent - INFO - 
+[TKT-013] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:52:06,114 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:52:06,114 - agent.support_agent - INFO -   ✓ Fallback decision generated: DENY
+2026-04-19 17:52:06,114 - agent.support_agent - INFO -   ✓ Primary reason: Order is outside the 30-day return window (791 days since delivery)
+2026-04-19 17:52:06,114 - agent.support_agent - INFO -   ✓ Confidence: 43%
+2026-04-19 17:52:06,114 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:52:06,116 - agent.support_agent - INFO - ✓ RESOLVED (2124ms)
+2026-04-19 17:52:06,116 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:52:06,116 - __main__ - INFO - ✓ Added TKT-013 to audit_log (total: 3)
+2026-04-19 17:52:06,123 - __main__ - INFO - Saved audit log with 3 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:52:06,125 - __main__ - INFO - ✓ Added TKT-013 to processing_results (total: 1)
+2026-04-19 17:52:06,125 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:06] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:52:06,451 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:06,453 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:06,705 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:06,705 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:06,937 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:06,944 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:07,265 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:07,269 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:07] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:10,393 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:10] "GET /api/results/TKT-013/explainable HTTP/1.1" 200 -
+2026-04-19 17:52:12,242 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:12,242 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:12,506 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:12,506 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:12] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:16,938 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:16,941 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:17,268 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:17,271 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:17] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:21,940 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:21,942 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:22,261 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:22,261 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:22] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:26,938 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:26,938 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:27,267 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:27,267 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:27] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:31,934 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:31,936 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:32,257 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:32,257 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:32] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:37,057 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:37,059 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:37] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:37,419 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:37,419 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:37] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:41,939 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:41,939 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:42,291 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:42,293 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:42] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:43,160 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:43] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:52:43,464 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:43] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:52:43,540 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:43] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:52:43,862 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:43] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:52:44,132 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:44] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:52:44,190 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:44,190 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:44] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:44,457 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:44,457 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:44] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:49,473 - __main__ - INFO - Returning 3 results (audit_log: 3, processing_results: 1)
+2026-04-19 17:52:49,476 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:49] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:49,804 - __main__ - INFO - Stats: 3 tickets, {'deny': 3}
+2026-04-19 17:52:49,806 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:49] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:52:57,546 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:52:57,551 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:57] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:52:57,818 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:52:57,818 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:52:57] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:00,050 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:00,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:00] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:00,371 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:00,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:00] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:00,871 - llm.reasoner - WARNING - GOOGLE_API_KEY not set. Gemini reasoning disabled.
+2026-04-19 17:53:00,871 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:53:00,871 - llm.reasoner - WARNING - No LLM providers available. Reasoning disabled.
+2026-04-19 17:53:00,874 - agent.support_agent - WARNING - ⚠ LLM reasoning disabled (no valid API keys)
+2026-04-19 17:53:00,874 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:53:00,881 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:53:00,881 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:53:00,927 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.36.65.73:5000
+2026-04-19 17:53:00,927 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-19 17:53:00,949 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:53:04,475 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:04,477 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:04] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:04,804 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:04,804 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:04] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:06,101 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:53:06,101 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:53:06,101 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:53:06,101 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:53:06,101 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:53:06,113 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:53:06,113 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:53:06,141 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:53:06,170 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:53:09,741 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:09] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:53:10,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:53:10,112 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:53:10,342 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:10,342 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:10,425 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:53:10,669 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:10,671 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:10,751 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:10] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:53:11,088 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:11,088 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:11,336 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:11,336 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:16,360 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:16,361 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:16,691 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:16,693 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:18,872 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:18] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:53:19,183 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:19] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:53:19,231 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:19] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:53:19,555 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:19] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:53:19,818 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:19] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:53:19,872 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:19,872 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:19] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:20,133 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:20,136 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:20] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:26,031 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:26,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:26] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:26,359 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:26,361 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:26] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:31,027 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:31,027 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:31] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:31,351 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:31,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:31] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:36,036 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:36,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:36] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:36,367 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:36,367 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:36] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:41,032 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:41,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:41] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:41,352 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:41,352 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:41] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:46,032 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:46,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:46] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:46,367 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:46,367 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:46] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:51,047 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:51,047 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:51] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:51,369 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:51,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:51] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:53:56,043 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:53:56,043 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:56] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:53:56,360 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:53:56,360 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:53:56] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:01,047 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:54:01,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:01] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:54:01,365 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:54:01,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:01] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:06,035 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:54:06,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:06] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:54:06,368 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:54:06,370 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:06] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:11,046 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:54:11,046 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:11] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:54:11,366 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:54:11,371 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:11] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:16,042 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:54:16,044 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:16] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:54:16,369 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:54:16,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:16] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:21,040 - __main__ - INFO - Returning 2 results (audit_log: 2, processing_results: 0)
+2026-04-19 17:54:21,042 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:21] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:54:21,366 - __main__ - INFO - Stats: 2 tickets, {'deny': 2}
+2026-04-19 17:54:21,366 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:54:21] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:54:59,231 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:54:59,232 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:54:59,232 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:54:59,236 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:54:59,725 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:00,398 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:03,427 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:03,427 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:03,427 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:03,427 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:03,427 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:03,434 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:03,434 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:03,449 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:03,463 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:04,030 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:04,030 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:04,032 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:04,032 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:04,032 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:04,039 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:04,039 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:04,053 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:04,068 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:05,289 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:05,289 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:05,291 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:05,291 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:06,001 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:06,629 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:09,686 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:09,686 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:09,688 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:09,688 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:09,688 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:09,695 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:09,695 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:09,708 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:09,725 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:10,200 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:10,200 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:10,200 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:10,200 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:10,200 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:10,206 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:10,206 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:10,216 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:10,234 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:23,350 - __main__ - INFO - Returning 0 results from current session (processing_results: 0)
+2026-04-19 17:55:23,350 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:55:23,600 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:55:24,137 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:24,146 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:24,146 - werkzeug - INFO -  * Detected change in 'C:\\Users\\ankus\\Desktop\\New folder\\hackathon\\api_server.py', reloading
+2026-04-19 17:55:24,616 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:25,197 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2026-04-19 17:55:28,477 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:28,477 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:28,477 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:28,477 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:28,477 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:28,486 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:28,486 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:28,500 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:28,514 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:28,960 - llm.reasoner - INFO - ✓ Gemini gemini-1.5-flash initialized
+2026-04-19 17:55:28,960 - llm.reasoner - WARNING - OPENAI_API_KEY not set. OpenAI reasoning disabled.
+2026-04-19 17:55:28,960 - llm.reasoner - INFO - ✓ LLM Reasoning initialized with 2 providers
+2026-04-19 17:55:28,960 - agent.support_agent - INFO - ✓ LLM reasoning enabled (Gemini/OpenAI)
+2026-04-19 17:55:28,960 - __main__ - INFO - Audit log file exists but is empty. Starting fresh.
+2026-04-19 17:55:28,966 - __main__ - INFO - Starting API server on http://localhost:5000
+2026-04-19 17:55:28,966 - __main__ - INFO - Frontend available at http://localhost:5000/frontend/
+2026-04-19 17:55:28,987 - werkzeug - WARNING -  * Debugger is active!
+2026-04-19 17:55:29,000 - werkzeug - INFO -  * Debugger PIN: 115-605-142
+2026-04-19 17:55:47,887 - __main__ - INFO - Returning 0 results from current session (processing_results: 0)
+2026-04-19 17:55:47,887 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:47] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:55:48,145 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:48] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:55:50,151 - __main__ - INFO - Returning 0 results from current session (processing_results: 0)
+2026-04-19 17:55:50,151 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:50] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:55:50,479 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:50] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:55:51,480 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:55:51] "GET /api/audit-log HTTP/1.1" 200 -
+2026-04-19 17:56:01,690 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:01] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-19 17:56:01,996 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:01] "[36mGET /frontend/index.css HTTP/1.1[0m" 304 -
+2026-04-19 17:56:02,050 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:02] "[36mGET /frontend/index.js HTTP/1.1[0m" 304 -
+2026-04-19 17:56:02,373 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:02] "GET /api/health HTTP/1.1" 200 -
+2026-04-19 17:56:02,633 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:02] "GET /api/tickets HTTP/1.1" 200 -
+2026-04-19 17:56:02,706 - __main__ - INFO - Returning 0 results from current session (processing_results: 0)
+2026-04-19 17:56:02,708 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:02] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:02,955 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:02] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:07,966 - __main__ - INFO - Returning 0 results from current session (processing_results: 0)
+2026-04-19 17:56:07,972 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:07] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:08,291 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:08] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:09,426 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-04-19 17:56:09,432 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:56:09,462 - agent.support_agent - INFO - TICKET: TKT-007
+2026-04-19 17:56:09,462 - agent.support_agent - INFO - ============================================================
+2026-04-19 17:56:09,462 - agent.support_agent - INFO - 
+[TKT-007] OBSERVATION: Ingesting ticket
+2026-04-19 17:56:09,463 - agent.support_agent - INFO -   Subject: Changed my mind - return USB cables
+2026-04-19 17:56:09,463 - agent.support_agent - INFO -   Source: email
+2026-04-19 17:56:09,463 - agent.support_agent - INFO - 
+[TKT-007] CLASSIFY: Analyzing...
+2026-04-19 17:56:09,472 - agent.support_agent - INFO -   Category: return_request
+2026-04-19 17:56:09,474 - agent.support_agent - INFO -   Urgency: high
+2026-04-19 17:56:09,474 - agent.support_agent - INFO -   Order ID: ORD-1007
+2026-04-19 17:56:09,474 - agent.support_agent - INFO - 
+[TKT-007] REACT LOOP: Executing 5-step tool chain
+2026-04-19 17:56:09,474 - agent.support_agent - INFO - 
+  [1/5] get_customer('grace.lee@email.com')
+2026-04-19 17:56:09,474 - utils.validation - DEBUG - ✓ Schema validation passed for get_customer
+2026-04-19 17:56:09,474 - agent.support_agent - INFO -        ✓ Grace Lee (Tier: gold)
+2026-04-19 17:56:09,479 - agent.support_agent - INFO - 
+  [2/5] get_order('ORD-1007')
+2026-04-19 17:56:09,479 - utils.validation - DEBUG - ✓ Schema validation passed for get_order
+2026-04-19 17:56:09,479 - agent.support_agent - INFO -        ✓ Product: P007 ($49.98)
+2026-04-19 17:56:09,479 - agent.support_agent - INFO - 
+  [3/5] check_refund_eligibility('ORD-1007')
+2026-04-19 17:56:09,479 - utils.validation - DEBUG - ✓ Schema validation passed for check_refund_eligibility
+2026-04-19 17:56:09,479 - agent.support_agent - INFO -        ✓ Eligible: False
+2026-04-19 17:56:09,488 - agent.support_agent - INFO -        ✗ INELIGIBLE: 768 days since delivery vs 60-day window for electronics_accessories
+2026-04-19 17:56:09,489 - agent.support_agent - INFO - 
+  [4/5] issue_refund - SKIPPED (not eligible)
+2026-04-19 17:56:09,490 - agent.support_agent - INFO - 
+  [5/5] send_reply('TKT-007')
+2026-04-19 17:56:09,776 - llm.reasoner - ERROR - Gemini message crafting failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:56:09,776 - agent.support_agent - DEBUG - Using LLM-crafted message (59 chars)
+2026-04-19 17:56:09,776 - utils.validation - DEBUG - ✓ Schema validation passed for send_reply
+2026-04-19 17:56:09,776 - agent.support_agent - INFO -        ✓ Reply sent: REPLY-TKT-007-1776601569
+2026-04-19 17:56:09,776 - agent.support_agent - INFO - 
+[TKT-007] DECISION
+2026-04-19 17:56:09,776 - agent.support_agent - DEBUG -    Confidence bonus for gold customer: +0.05
+2026-04-19 17:56:09,776 - agent.support_agent - DEBUG -    Confidence bonus for clear ineligibility: +0.05
+2026-04-19 17:56:10,213 - llm.reasoner - ERROR - Gemini confidence assessment failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-04-19 17:56:10,214 - agent.support_agent - DEBUG -    LLM confidence assessment: 0.50
+2026-04-19 17:56:10,214 - agent.support_agent - INFO -    Calibrated confidence: 0.70
+2026-04-19 17:56:10,216 - agent.support_agent - INFO -   Action: deny
+2026-04-19 17:56:10,216 - agent.support_agent - INFO -   Confidence: 70.0% (calibrated from tool results)
+2026-04-19 17:56:10,216 - agent.support_agent - INFO -   Accuracy Factors: {'tool_success_rate': 1.0, 'customer_tier_factor': 0.8, 'confidence_score': 0.7, 'tool_call_count': 4}
+2026-04-19 17:56:10,216 - agent.support_agent - INFO - 
+[TKT-007] GENERATING EXPLAINABLE DECISION
+2026-04-19 17:56:10,218 - agent.support_agent - WARNING -   ✗ Explainable decision generation failed: 'LLMReasoner' object has no attribute 'generate_explainable_decision'
+2026-04-19 17:56:10,218 - agent.support_agent - INFO -   ✓ Fallback decision generated: DENY
+2026-04-19 17:56:10,218 - agent.support_agent - INFO -   ✓ Primary reason: Order is outside the 60-day return window (768 days since delivery)
+2026-04-19 17:56:10,218 - agent.support_agent - INFO -   ✓ Confidence: 70%
+2026-04-19 17:56:10,220 - agent.support_agent - INFO - 
+============================================================
+2026-04-19 17:56:10,220 - agent.support_agent - INFO - ✓ RESOLVED (788ms)
+2026-04-19 17:56:10,220 - agent.support_agent - INFO - ============================================================
+
+2026-04-19 17:56:10,220 - __main__ - INFO - ✓ Added TKT-007 to audit_log (total: 1)
+2026-04-19 17:56:10,225 - __main__ - INFO - Saved audit log with 1 entries to C:\Users\ankus\Desktop\New folder\hackathon\output\audit_log.json
+2026-04-19 17:56:10,227 - __main__ - INFO - ✓ Added TKT-007 to processing_results (total: 1)
+2026-04-19 17:56:10,229 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:10] "POST /api/process/ticket HTTP/1.1" 200 -
+2026-04-19 17:56:10,552 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:10,552 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:10] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:10,798 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:10,798 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:10] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:12,967 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:12,974 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:12] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:13,295 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:13,300 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:13] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:14,176 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:14] "GET /api/results/TKT-007/explainable HTTP/1.1" 200 -
+2026-04-19 17:56:18,277 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:18,277 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:18] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:18,533 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:18,534 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:18] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:20,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:20] "GET /api/audit-log HTTP/1.1" 200 -
+2026-04-19 17:56:23,073 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:23,074 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:23,389 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:23,389 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:27,983 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:27,985 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:27] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:28,305 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:28,305 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:28] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:33,052 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:33,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:33] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:33,393 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:33,393 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:33] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:38,140 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:38,140 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:38] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:38,469 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:38,471 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:38] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:43,031 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:43,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:43] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:43,348 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:43,348 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:43] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:48,032 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:48,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:48] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:48,360 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:48,366 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:48] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:53,038 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:53,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:53] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:53,358 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:53,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:53] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:56:58,047 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:56:58,049 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:58] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:56:58,376 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:56:58,382 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:56:58] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:03,032 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:03,036 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:03] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:03,365 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:03,367 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:03] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:08,035 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:08,035 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:08] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:08,367 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:08,369 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:08] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:13,031 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:13,031 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:13] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:13,349 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:13,349 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:13] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:18,044 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:18,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:18] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:18,358 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:18,358 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:18] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:23,052 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:23,053 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:23] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:23,380 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:23,380 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:23] "GET /api/stats HTTP/1.1" 200 -
+2026-04-19 17:57:28,032 - __main__ - INFO - Returning 1 results from current session (processing_results: 1)
+2026-04-19 17:57:28,032 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:28] "GET /api/results HTTP/1.1" 200 -
+2026-04-19 17:57:28,382 - __main__ - INFO - Stats (current session): 1 tickets, {'deny': 1}
+2026-04-19 17:57:28,382 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2026 17:57:28] "GET /api/stats HTTP/1.1" 200 -
