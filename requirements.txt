@@ -1,7 +1,7 @@
 # Project dependencies
 
-# Core (uses Python standard library)
-Python>=3.9
+# Core (uses Python standard library - Python 3.9+ required)
+# Note: Python version is specified in deployment config, not here
 
 # Standard library modules:
 # - asyncio (async/concurrent processing)

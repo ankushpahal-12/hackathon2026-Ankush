@@ -713,6 +713,12 @@ def server_error(error):
 
 
 if __name__ == '__main__':
-    logger.info("Starting API server on http://localhost:5000")
-    logger.info("Frontend available at http://localhost:5000/frontend/")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Get port from environment variable or default to 5000
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('FLASK_ENV', 'production') == 'development'
+    
+    logger.info(f"Starting API server on http://0.0.0.0:{port}")
+    logger.info(f"Frontend available at http://0.0.0.0:{port}/frontend/")
+    logger.info(f"Debug mode: {debug_mode}")
+    
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
