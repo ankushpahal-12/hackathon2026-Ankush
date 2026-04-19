@@ -104,6 +104,8 @@ class TicketResolution:
     classification: Dict[str, Any] = field(default_factory=dict)
     processed_at: str = field(default_factory=lambda: datetime.now().isoformat())
     processing_time_ms: float = 0.0
+    accuracy_factors: Dict[str, float] = field(default_factory=dict)  # NEW: Accuracy improvement tracking
+    decision_reason: str = ""  # NEW: LLM-generated human-readable reason
     
     def to_dict(self):
         return {
@@ -111,12 +113,14 @@ class TicketResolution:
             "action": self.action.value,
             "reasoning": self.reasoning,
             "confidence_score": self.confidence_score,
+            "decision_reason": self.decision_reason,  # NEW: Include LLM reason
             "tool_calls": [tc.to_dict() for tc in self.tool_calls],
             "customer_message": self.customer_message,
             "escalation_case_id": self.escalation_case_id,
             "classification": self.classification,
             "processed_at": self.processed_at,
-            "processing_time_ms": self.processing_time_ms
+            "processing_time_ms": self.processing_time_ms,
+            "accuracy_factors": self.accuracy_factors  # NEW: Include accuracy breakdown
         }
 
 
@@ -263,9 +267,16 @@ class SupportAgent:
                     ticket_id, "Eligibility check failed", tool_calls, classification
                 )
             
-            eligible = eligibility_result['eligible']
-            logger.info(f"       ✓ Eligible: {eligible}")
-            logger.info(f"       {eligibility_result['reason']}")
+            # Safely extract eligibility info - ensure it's a dict
+            if isinstance(eligibility_result, dict):
+                eligible = eligibility_result.get('eligible', False)
+                logger.info(f"       ✓ Eligible: {eligible}")
+                logger.info(f"       {eligibility_result.get('reason', 'Unknown')}")
+            else:
+                logger.warning(f"   Unexpected eligibility_result type: {type(eligibility_result)}")
+                return await self._escalate_ticket(
+                    ticket_id, f"Eligibility check returned unexpected type: {type(eligibility_result)}", tool_calls, classification
+                )
             
             # TOOL 4: Issue refund (if eligible)
             refund_id = None
@@ -289,8 +300,10 @@ class SupportAgent:
             
             # TOOL 5: Send reply to customer
             logger.info(f"\n  [5/5] send_reply('{ticket_id}')")
+            # Ensure eligibility_result is a dict for _craft_message
+            eligibility_dict_for_message = eligibility_result if isinstance(eligibility_result, dict) else {}
             customer_message = self._craft_message(
-                customer, order, eligible,  eligibility_result if eligibility_result else {}
+                customer, order, eligible, eligibility_dict_for_message
             )
             
             reply_result = await self._call_tool_with_retry(
@@ -307,23 +320,100 @@ class SupportAgent:
             # ====== STEP 4: DECISION ======
             logger.info(f"\n[{ticket_id}] DECISION")
             
+            # Safely handle eligibility_result - could be dict or error string
+            eligibility_dict = eligibility_result if isinstance(eligibility_result, dict) else {}
+            
             # CONFIDENCE CALIBRATION (GOOD → GREAT)
             confidence = self._calibrate_confidence(
                 tool_calls=tool_calls,
                 customer=customer,
                 eligible=eligible if eligible is not None else False,
-                certainty_level=eligibility_result.get('eligible') if eligibility_result else None
+                certainty_level=eligibility_dict.get('eligible') if eligibility_dict else None
             )
             
+            # Calculate accuracy factors (NEW)
+            successful_tool_calls = sum(1 for tc in tool_calls if tc.result is not None)
+            accuracy_factors = {
+                'tool_success_rate': successful_tool_calls / len(tool_calls) if tool_calls else 0,
+                'customer_tier_factor': 1.0 if customer.get('tier') == 'vip' else 0.8,
+                'confidence_score': confidence,
+                'tool_call_count': len(tool_calls)
+            }
+            
+            # ====== INTELLIGENT DECISION LOGIC ======
+            # Analyze ticket content for defects, damaged items, wrong item, etc.
+            ticket_text_lower = ticket_text.lower()
+            is_defective = any(word in ticket_text_lower for word in ['defect', 'broken', 'stopped', 'died', 'not working', 'damage', 'cracked', 'malfunction', 'faulty'])
+            is_damaged = any(word in ticket_text_lower for word in ['damaged', 'cracked', 'broken on arrival', 'arrived damaged'])
+            is_wrong_item = any(word in ticket_text_lower for word in ['wrong', 'incorrect', 'color', 'size', 'variant', 'not as described'])
+            
+            # Decision logic with VIP/Premium exceptions
             if eligible and refund_id:
+                # Standard: Eligible within return window
                 action = ResolutionAction.APPROVE_REFUND
                 reasoning = f"Refund eligibility confirmed. Refund ID: {refund_id}"
+            elif is_damaged:
+                # Damaged on arrival: Always approve regardless of window
+                action = ResolutionAction.APPROVE_REFUND
+                refund_result = await self._call_tool_with_retry(
+                    "issue_refund",
+                    {"order_id": order_id, "amount": order['total_price']},
+                    tool_calls,
+                    ticket_id=ticket_id
+                )
+                refund_id = refund_result.get('refund_id') if refund_result else None
+                reasoning = f"Item damaged on arrival. Refund ID: {refund_id}"
+            elif is_defective and customer.get('tier') in ['vip', 'premium', 'gold']:
+                # Defective + VIP: Apply leniency exception
+                action = ResolutionAction.APPROVE_REFUND
+                refund_result = await self._call_tool_with_retry(
+                    "issue_refund",
+                    {"order_id": order_id, "amount": order['total_price']},
+                    tool_calls,
+                    ticket_id=ticket_id
+                )
+                refund_id = refund_result.get('refund_id') if refund_result else None
+                reasoning = f"Defective item + VIP customer (leniency applied). Refund ID: {refund_id}"
+            elif is_wrong_item:
+                # Wrong item: Always approve exchange/refund
+                action = ResolutionAction.APPROVE_REFUND
+                refund_result = await self._call_tool_with_retry(
+                    "issue_refund",
+                    {"order_id": order_id, "amount": order['total_price']},
+                    tool_calls,
+                    ticket_id=ticket_id
+                )
+                refund_id = refund_result.get('refund_id') if refund_result else None
+                reasoning = f"Wrong item delivered. Refund ID: {refund_id}"
             else:
+                # Standard: Not eligible within window
                 action = ResolutionAction.DENY
-                reasoning = f"Not eligible. {eligibility_result.get('reason', 'Unknown') if eligibility_result else 'Eligibility check failed'}"
+                reason_text = eligibility_dict.get('reason', 'Eligibility check failed') if eligibility_dict else 'Eligibility check failed'
+                reasoning = f"Not eligible. {reason_text}"
             
             logger.info(f"  Action: {action.value}")
             logger.info(f"  Confidence: {confidence*100:.1f}% (calibrated from tool results)")
+            logger.info(f"  Accuracy Factors: {accuracy_factors}")
+            
+            # Generate LLM-powered decision reason (NEW)
+            logger.info(f"\n[{ticket_id}] GENERATING LLM DECISION REASON")
+            decision_reason = ""
+            if self.use_llm and self.llm_reasoner and self.llm_reasoner.enabled:
+                try:
+                    decision_reason_context = {
+                        'action': action.value,
+                        'confidence': confidence,
+                        'eligibility': eligibility_dict,  # Use safe dict version
+                        'customer': customer,
+                        'accuracy_factors': accuracy_factors
+                    }
+                    decision_reason = self.llm_reasoner.generate_decision_reason(decision_reason_context)
+                    logger.info(f"  ✓ LLM Reason: {decision_reason[:80]}...")
+                except Exception as e:
+                    logger.warning(f"  ✗ LLM reason generation failed: {e}")
+                    decision_reason = reasoning  # Fallback to technical reasoning
+            else:
+                decision_reason = reasoning  # Fallback if LLM not available
             
             # ====== RETURN RESOLUTION ======
             processing_time = (time.time() - start_time) * 1000
@@ -333,10 +423,12 @@ class SupportAgent:
                 action=action,
                 reasoning=reasoning,
                 confidence_score=confidence,
+                decision_reason=decision_reason,  # NEW: Include LLM-generated reason
                 tool_calls=tool_calls,
                 customer_message=customer_message,
                 classification=classification,
-                processing_time_ms=processing_time
+                processing_time_ms=processing_time,
+                accuracy_factors=accuracy_factors  # NEW: Include accuracy breakdown
             )
             
             logger.info(f"\n{'='*60}")
@@ -353,10 +445,12 @@ class SupportAgent:
                 ticket_id=ticket_id,
                 action=ResolutionAction.ESCALATE,
                 reasoning=f"Exception: {str(e)}",
+                decision_reason=f"Escalated due to error: {str(e)}",  # NEW
                 confidence_score=0.0,
                 tool_calls=tool_calls,
                 customer_message="Your ticket requires manual review.",
-                processing_time_ms=processing_time
+                processing_time_ms=processing_time,
+                accuracy_factors={}  # NEW
             )
     
     async def _call_tool_with_retry(
@@ -707,299 +801,6 @@ ShopWave Support Team"""
         
         logger.info(f"   Calibrated confidence: {final_confidence:.2f}")
         return final_confidence
-
-        
-    async def process_ticket(self, ticket_id: str) -> TicketResolution:
-        """
-        Process a single support ticket autonomously
-        
-        Implements ReAct pattern:
-        1. Observation: Extract and understand ticket
-        2. Thought: Reason about policy and requirements  
-        3. Action: Call tools (get customer, order, product, check eligibility, etc)
-        4. Observation: Process tool results
-        5. Repeat until decision made
-        6. Execute: Issue refund/escalate/reply
-        """
-        logger.info(f"Processing ticket: {ticket_id}")
-        
-        ticket = get_ticket(ticket_id)
-        if not ticket:
-            raise ValueError(f"Ticket {ticket_id} not found")
-        
-        tool_calls = []
-        confidence_score = 0.5
-        
-        try:
-            # ====== OBSERVATION ======
-            # Extract key information from ticket
-            logger.info(f"[{ticket_id}] OBSERVATION: Analyzing ticket content")
-            ticket_text = f"{ticket['subject']} {ticket['body']}"
-            order_id = extract_order_id(ticket_text)
-            customer_email = ticket['customer_email']
-            
-            if not order_id:
-                logger.warning(f"[{ticket_id}] No order ID found in ticket")
-                return await self._escalate_ticket(
-                    ticket_id, 
-                    "No order ID found in ticket text",
-                    tool_calls
-                )
-            
-            # ====== THOUGHT ======
-            # Reason about policy requirements
-            logger.info(f"[{ticket_id}] THOUGHT: Determining policy requirements")
-            logger.info(f"[{ticket_id}] - Order ID: {order_id}")
-            logger.info(f"[{ticket_id}] - Customer email: {customer_email}")
-            
-            # ====== ACTION: Tool Call Chain ======
-            # Call 1: Get customer profile
-            logger.info(f"[{ticket_id}] ACTION 1: get_customer('{customer_email}')")
-            customer_result = await self._call_tool(
-                "get_customer",
-                {"email": customer_email},
-                tool_calls
-            )
-            if not customer_result:
-                return await self._escalate_ticket(
-                    ticket_id,
-                    f"Customer not found: {customer_email}",
-                    tool_calls
-                )
-            
-            customer = customer_result['data']
-            logger.info(f"[{ticket_id}] - Customer tier: {customer['tier']}")
-            
-            # Call 2: Get order details
-            logger.info(f"[{ticket_id}] ACTION 2: get_order('{order_id}')")
-            order_result = await self._call_tool(
-                "get_order",
-                {"order_id": order_id},
-                tool_calls
-            )
-            if not order_result:
-                return await self._escalate_ticket(
-                    ticket_id,
-                    f"Order not found: {order_id}",
-                    tool_calls
-                )
-            
-            order = order_result['data']
-            logger.info(f"[{ticket_id}] - Order status: {order['status']}")
-            logger.info(f"[{ticket_id}] - Total price: ${order['total_price']}")
-            
-            # Call 3: Get product information
-            logger.info(f"[{ticket_id}] ACTION 3: get_product('{order['product_id']}')")
-            product_result = await self._call_tool(
-                "get_product",
-                {"product_id": order['product_id']},
-                tool_calls
-            )
-            if not product_result:
-                return await self._escalate_ticket(
-                    ticket_id,
-                    f"Product not found: {order['product_id']}",
-                    tool_calls
-                )
-            
-            product = product_result['data']
-            logger.info(f"[{ticket_id}] - Product: {product['name']}")
-            logger.info(f"[{ticket_id}] - Category: {product['category']}")
-            logger.info(f"[{ticket_id}] - Warranty: {product['warranty_months']} months")
-            
-            # Call 4: Check refund eligibility
-            logger.info(f"[{ticket_id}] ACTION 4: check_refund_eligibility('{order_id}')")
-            eligibility_result = await self._call_tool(
-                "get_refund_eligibility",
-                {"order_id": order_id},
-                tool_calls
-            )
-            
-            eligible = eligibility_result['eligible'] if eligibility_result else False
-            days_since = eligibility_result.get('days_since_delivery', -1) if eligibility_result else -1
-            
-            logger.info(f"[{ticket_id}] - Days since delivery: {days_since}")
-            logger.info(f"[{ticket_id}] - Eligible: {eligible}")
-            
-            # Call 5: Search knowledge base for relevant policies
-            logger.info(f"[{ticket_id}] ACTION 5: search_knowledge_base(...)")
-            kb_query = f"{product['category']} return policy {customer['tier']}"
-            kb_result = await self._call_tool(
-                "search_knowledge_base",
-                {"query": kb_query},
-                tool_calls
-            )
-            
-            logger.info(f"[{ticket_id}] - Policy results: {len(kb_result.get('results', []))} sections")
-            
-            # ====== OBSERVATION: Process results ======
-            logger.info(f"[{ticket_id}] OBSERVATION: Analyzing results")
-            
-            # Make decision based on policy and tool results
-            # Pass KB results to inform decision-making
-            decision = self._make_decision(
-                ticket, customer, order, product,
-                eligible, days_since, ticket_text, kb_result
-            )
-            
-            logger.info(f"[{ticket_id}] Decision: {decision['action'].value}")
-            logger.info(f"[{ticket_id}] Confidence: {decision['confidence']:.2f}")
-            
-            # ====== ACTION: Execute decision ======
-            if decision['action'] == ResolutionAction.APPROVE_REFUND:
-                logger.info(f"[{ticket_id}] ACTION: Issuing refund...")
-                refund_result = await self._call_tool(
-                    "issue_refund",
-                    {"order_id": order_id, "amount": order['total_price']},
-                    tool_calls
-                )
-                
-                refund_id = refund_result.get('refund_id', 'UNKNOWN') if refund_result else None
-                customer_message = f"""
-Dear {customer['name']},
-
-Thank you for contacting ShopWave Support. We've reviewed your request and approved a full refund of ${order['total_price']}.
-
-Refund Details:
-- Order ID: {order_id}
-- Refund ID: {refund_id}
-- Amount: ${order['total_price']}
-- Method: Original payment method
-- Timeline: 5-7 business days
-
-Your refund has been processed. You should see it in your account within the stated timeline.
-
-Thank you for your business!
-
-Best regards,
-ShopWave Support Team
-                """
-                
-                await self._call_tool(
-                    "send_reply",
-                    {"ticket_id": ticket_id, "message": customer_message},
-                    tool_calls
-                )
-                
-                return TicketResolution(
-                    ticket_id=ticket_id,
-                    action=ResolutionAction.APPROVE_REFUND,
-                    reasoning=decision['reasoning'],
-                    confidence_score=decision['confidence'],
-                    tool_calls=tool_calls,
-                    customer_message=customer_message
-                )
-                
-            elif decision['action'] == ResolutionAction.DENY:
-                customer_message = f"""
-Dear {customer['name']},
-
-Thank you for contacting ShopWave Support regarding your recent order ({order_id}).
-
-After reviewing your request, we're unable to approve this return due to: {decision['reason']}
-
-However, we'd like to offer you the following options:
-{decision.get('alternatives', '- Please contact us for further assistance')}
-
-We appreciate your understanding and your business!
-
-Best regards,
-ShopWave Support Team
-                """
-                
-                await self._call_tool(
-                    "send_reply",
-                    {"ticket_id": ticket_id, "message": customer_message},
-                    tool_calls
-                )
-                
-                return TicketResolution(
-                    ticket_id=ticket_id,
-                    action=ResolutionAction.DENY,
-                    reasoning=decision['reasoning'],
-                    confidence_score=decision['confidence'],
-                    tool_calls=tool_calls,
-                    customer_message=customer_message
-                )
-                
-            else:  # ESCALATE
-                logger.info(f"[{ticket_id}] ACTION: Escalating to human agent...")
-                escalation_result = await self._call_tool(
-                    "escalate",
-                    {
-                        "ticket_id": ticket_id,
-                        "summary": decision.get('escalation_summary', decision['reasoning']),
-                        "priority": decision.get('priority', 'normal')
-                    },
-                    tool_calls
-                )
-                
-                case_id = escalation_result.get('case_id', 'UNKNOWN') if escalation_result else None
-                customer_message = f"""
-Dear {customer['name']},
-
-Thank you for contacting ShopWave Support. Your request requires additional review by our specialist team.
-
-Your case has been escalated with priority: {decision.get('priority', 'normal').upper()}
-Case ID: {case_id}
-
-Our team will review your case and respond within 2-4 hours.
-
-Thank you for your patience!
-
-Best regards,
-ShopWave Support Team
-                """
-                
-                await self._call_tool(
-                    "send_reply",
-                    {"ticket_id": ticket_id, "message": customer_message},
-                    tool_calls
-                )
-                
-                return TicketResolution(
-                    ticket_id=ticket_id,
-                    action=ResolutionAction.ESCALATE,
-                    reasoning=decision['reasoning'],
-                    confidence_score=decision['confidence'],
-                    tool_calls=tool_calls,
-                    customer_message=customer_message,
-                    escalation_case_id=case_id
-                )
-        
-        except Exception as e:
-            logger.error(f"[{ticket_id}] Error processing ticket: {str(e)}")
-            return await self._escalate_ticket(
-                ticket_id,
-                f"Agent error: {str(e)}",
-                tool_calls
-            )
-    
-    async def _escalate_ticket(self, ticket_id: str, reason: str, tool_calls: List[ToolCall]) -> TicketResolution:
-        """Escalate ticket when processing fails"""
-        logger.info(f"[{ticket_id}] Escalating due to: {reason}")
-        
-        escalation_result = await self._call_tool(
-            "escalate",
-            {
-                "ticket_id": ticket_id,
-                "summary": reason,
-                "priority": "high"
-            },
-            tool_calls
-        )
-        
-        case_id = escalation_result.get('case_id', 'UNKNOWN') if escalation_result else None
-        
-        return TicketResolution(
-            ticket_id=ticket_id,
-            action=ResolutionAction.ESCALATE,
-            reasoning=f"Agent unable to process automatically: {reason}",
-            confidence_score=0.0,
-            tool_calls=tool_calls,
-            customer_message="Your request has been escalated to our support team.",
-            escalation_case_id=case_id
-        )
     
     async def _call_tool(self, tool_name: str, params: Dict[str, Any], 
                         tool_calls: List[ToolCall], retry_count: int = 0) -> Optional[Any]:

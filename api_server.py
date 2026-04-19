@@ -42,6 +42,70 @@ agent = SupportAgent(max_retries=2, tool_timeout=5)
 processing_results = {}
 audit_log = []
 
+# Audit log file path
+AUDIT_LOG_FILE = os.path.join(os.path.dirname(__file__), 'output', 'audit_log.json')
+
+# ==================== AUDIT LOG FILE MANAGEMENT ====================
+
+def load_audit_log_from_file():
+    """Load existing audit log from JSON file"""
+    global audit_log, processing_results
+    try:
+        if os.path.exists(AUDIT_LOG_FILE):
+            with open(AUDIT_LOG_FILE, 'r') as f:
+                content = f.read().strip()
+                if not content:  # File is empty
+                    logger.info(f"Audit log file exists but is empty. Starting fresh.")
+                    audit_log = []
+                    return
+                
+                data = json.loads(content)
+                if isinstance(data, dict) and 'resolutions' in data:
+                    # Load from structured audit log format
+                    audit_log = data.get('resolutions', [])
+                    logger.info(f"Loaded {len(audit_log)} existing audit entries from {AUDIT_LOG_FILE}")
+                    
+                    # NOTE: Do NOT sync cached results to processing_results on startup
+                    # This allows fresh processing_results display for new sessions
+                    # (Audit log persists for auditing purposes, but doesn't pre-populate results)
+                    logger.info(f"Audit log loaded for reference only. Results display will be empty until new tickets are processed.")
+                    
+                elif isinstance(data, list):
+                    # Load from simple list format
+                    audit_log = data
+                    logger.info(f"Loaded {len(audit_log)} existing audit entries from {AUDIT_LOG_FILE}")
+        else:
+            logger.info(f"Audit log file not found. Will create on first save.")
+            audit_log = []
+    except Exception as e:
+        logger.error(f"Error loading audit log from file: {str(e)}")
+        audit_log = []
+
+def save_audit_log_to_file():
+    """Save audit log to JSON file"""
+    try:
+        # Ensure output directory exists
+        os.makedirs(os.path.dirname(AUDIT_LOG_FILE), exist_ok=True)
+        
+        # Create structured audit log object
+        audit_data = {
+            'session_id': 'session_' + datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),
+            'generated_at': datetime.now().isoformat(),
+            'total_tickets_processed': len(audit_log),
+            'resolutions': audit_log
+        }
+        
+        # Write to file with pretty formatting
+        with open(AUDIT_LOG_FILE, 'w') as f:
+            json.dump(audit_data, f, indent=2)
+        
+        logger.info(f"Saved audit log with {len(audit_log)} entries to {AUDIT_LOG_FILE}")
+    except Exception as e:
+        logger.error(f"Error saving audit log to file: {str(e)}")
+
+# Load existing audit log on startup
+load_audit_log_from_file()
+
 
 # ==================== TICKETS ENDPOINTS ====================
 
@@ -103,6 +167,31 @@ def process_single_ticket():
                 'error': 'ticket_id is required'
             }), 400
         
+        # CHECK FOR DUPLICATES: If ticket already processed, return existing result
+        existing_entry = next((entry for entry in audit_log if entry.get('ticket_id') == ticket_id), None)
+        if existing_entry:
+            logger.info(f"Ticket {ticket_id} already processed. Returning existing result.")
+            return jsonify({
+                'success': True,
+                'data': {
+                    'ticket_id': ticket_id,
+                    'action': existing_entry.get('action'),
+                    'confidence': existing_entry.get('confidence_score'),
+                    'reasoning': existing_entry.get('reasoning'),
+                    'decision_reason': existing_entry.get('decision_reason', existing_entry.get('reasoning')),  # NEW
+                    'tool_calls': len(existing_entry.get('tool_calls', [])),
+                    'note': 'Result from previous processing (not reprocessed)'
+                }
+            }), 200
+        
+        # Get full ticket details
+        ticket = get_ticket(ticket_id)
+        if not ticket:
+            return jsonify({
+                'success': False,
+                'error': f'Ticket {ticket_id} not found'
+            }), 404
+        
         # Process ticket (sync wrapper for async function)
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -110,23 +199,54 @@ def process_single_ticket():
         try:
             resolution = loop.run_until_complete(agent.process_ticket(ticket_id))
             
-            # Store result
+            # Create audit log entry with full ticket details
+            audit_entry = {
+                'ticket_id': ticket_id,
+                'customer_email': ticket.get('customer_email', ''),
+                'subject': ticket.get('subject', ''),
+                'body': ticket.get('body', ''),
+                'source': ticket.get('source', ''),
+                'created_at': ticket.get('created_at', ''),
+                'action': resolution.action.value,
+                'reasoning': resolution.reasoning,
+                'decision_reason': resolution.decision_reason,  # NEW: LLM-generated reason
+                'confidence_score': resolution.confidence_score,
+                'accuracy_factors': resolution.accuracy_factors,  # NEW: Include accuracy breakdown
+                'processing_time_ms': 0,
+                'tool_calls': [
+                    {
+                        'name': tool_call.name,
+                        'params': tool_call.params,
+                        'result': tool_call.result,
+                        'timestamp': tool_call.timestamp.isoformat() if hasattr(tool_call.timestamp, 'isoformat') else str(tool_call.timestamp),
+                        'duration_ms': tool_call.duration_ms,
+                        'error': tool_call.error,
+                        'error_type': tool_call.error_type if hasattr(tool_call, 'error_type') else None
+                    }
+                    for tool_call in resolution.tool_calls
+                ],
+                'ui_interaction': f"User clicked 'Process One by One' at {datetime.now().isoformat()}. UI displayed ticket {ticket_id} in processing state.",
+                'processed_at': datetime.now().isoformat()
+            }
+            
+            # Add to audit log
+            audit_log.append(audit_entry)
+            logger.info(f"✓ Added {ticket_id} to audit_log (total: {len(audit_log)})")
+            
+            # Save to JSON file
+            save_audit_log_to_file()
+            
+            # Store result (for API responses)
             processing_results[ticket_id] = {
                 'ticket_id': ticket_id,
                 'action': resolution.action.value,
                 'confidence_score': resolution.confidence_score,
                 'reasoning': resolution.reasoning,
+                'decision_reason': resolution.decision_reason,  # NEW: Include LLM reason
                 'tool_calls': len(resolution.tool_calls),
                 'timestamp': datetime.now().isoformat()
             }
-            
-            # Log to audit trail
-            audit_log.append({
-                'ticket_id': ticket_id,
-                'action': 'PROCESS',
-                'result': processing_results[ticket_id],
-                'timestamp': datetime.now().isoformat()
-            })
+            logger.info(f"✓ Added {ticket_id} to processing_results (total: {len(processing_results)})")
             
             return jsonify({
                 'success': True,
@@ -135,6 +255,7 @@ def process_single_ticket():
                     'action': resolution.action.value,
                     'confidence': resolution.confidence_score,
                     'reasoning': resolution.reasoning,
+                    'decision_reason': resolution.decision_reason,  # NEW: LLM-generated reason
                     'tool_calls': len(resolution.tool_calls)
                 }
             }), 200
@@ -142,7 +263,7 @@ def process_single_ticket():
             loop.close()
             
     except Exception as e:
-        logger.error(f"Error processing ticket: {str(e)}")
+        logger.error(f"Error processing ticket {ticket_id}: {str(e)}", exc_info=True)
         return jsonify({
             'success': False,
             'error': str(e)
@@ -162,6 +283,26 @@ def process_batch():
                 'error': 'ticket_ids list is required'
             }), 400
         
+        # DEDUPLICATION: Filter out already-processed tickets
+        processed_ticket_ids = {entry.get('ticket_id') for entry in audit_log}
+        new_ticket_ids = [tid for tid in ticket_ids if tid not in processed_ticket_ids]
+        already_processed = [tid for tid in ticket_ids if tid in processed_ticket_ids]
+        
+        if already_processed:
+            logger.info(f"Skipping {len(already_processed)} already-processed tickets: {already_processed}")
+        
+        if not new_ticket_ids:
+            logger.info(f"All {len(ticket_ids)} tickets already processed. Returning existing results.")
+            return jsonify({
+                'success': True,
+                'data': {
+                    'total_processed': 0,
+                    'duration_seconds': 0,
+                    'note': f'All {len(ticket_ids)} tickets were already processed. No new processing needed.',
+                    'already_processed_count': len(already_processed)
+                }
+            }), 200
+        
         # Process tickets (sync wrapper for async function)
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -169,38 +310,46 @@ def process_batch():
         try:
             start_time = datetime.now()
             resolutions = loop.run_until_complete(
-                agent.process_tickets_concurrently(ticket_ids)
+                agent.process_tickets_concurrently(new_ticket_ids)
             )
             end_time = datetime.now()
             duration = (end_time - start_time).total_seconds()
             
-            # Store results
-            results_summary = {
-                'total_processed': len(resolutions),
-                'duration_seconds': duration,
-                'average_time_per_ticket': duration / len(resolutions),
-                'by_action': {},
-                'confidence_stats': {
-                    'average': sum(r.confidence_score for r in resolutions) / len(resolutions),
-                    'min': min(r.confidence_score for r in resolutions),
-                    'max': max(r.confidence_score for r in resolutions),
-                    'high_confidence_count': sum(1 for r in resolutions if r.confidence_score > 0.90),
-                    'low_confidence_count': sum(1 for r in resolutions if r.confidence_score < 0.70)
-                },
-                'tool_call_stats': {
-                    'total_calls': sum(len(r.tool_calls) for r in resolutions),
-                    'average_per_ticket': sum(len(r.tool_calls) for r in resolutions) / len(resolutions)
-                },
-                'timestamp': datetime.now().isoformat()
-            }
-            
-            # Count by action
+            # Add each resolution to audit log with full ticket details
             for resolution in resolutions:
-                action = resolution.action.value
-                results_summary['by_action'][action] = results_summary['by_action'].get(action, 0) + 1
-            
-            # Store individual results
-            for resolution in resolutions:
+                ticket = get_ticket(resolution.ticket_id)
+                if ticket:
+                    audit_entry = {
+                        'ticket_id': resolution.ticket_id,
+                        'customer_email': ticket.get('customer_email', ''),
+                        'subject': ticket.get('subject', ''),
+                        'body': ticket.get('body', ''),
+                        'source': ticket.get('source', ''),
+                        'created_at': ticket.get('created_at', ''),
+                        'action': resolution.action.value,
+                        'reasoning': resolution.reasoning,
+                        'confidence_score': resolution.confidence_score,
+                        'accuracy_factors': resolution.accuracy_factors,  # NEW: Include accuracy breakdown
+                        'processing_time_ms': int((resolution.end_time - resolution.start_time).total_seconds() * 1000) if hasattr(resolution, 'end_time') else 0,
+                        'tool_calls': [
+                            {
+                                'name': tool_call.name,
+                                'params': tool_call.params,
+                                'result': tool_call.result,
+                                'timestamp': tool_call.timestamp.isoformat() if hasattr(tool_call.timestamp, 'isoformat') else str(tool_call.timestamp),
+                                'duration_ms': tool_call.duration_ms,
+                                'error': tool_call.error,
+                                'error_type': tool_call.error_type if hasattr(tool_call, 'error_type') else None,
+                                'retry_count': tool_call.retry_count if hasattr(tool_call, 'retry_count') else 0
+                            }
+                            for tool_call in resolution.tool_calls
+                        ],
+                        'ui_interaction': f"User clicked 'Process All At Once' at {start_time.isoformat()}. UI displayed ticket {resolution.ticket_id} in processing state with spinner animation.",
+                        'processed_at': datetime.now().isoformat()
+                    }
+                    audit_log.append(audit_entry)
+                
+                # Store result
                 processing_results[resolution.ticket_id] = {
                     'ticket_id': resolution.ticket_id,
                     'action': resolution.action.value,
@@ -208,12 +357,34 @@ def process_batch():
                     'tool_calls': len(resolution.tool_calls)
                 }
             
-            # Log to audit trail
-            audit_log.append({
-                'event': 'BATCH_PROCESS',
-                'summary': results_summary,
-                'timestamp': datetime.now().isoformat()
-            })
+            # Save audit log to file
+            save_audit_log_to_file()
+            
+            # Store results summary
+            results_summary = {
+                'total_processed': len(resolutions),
+                'duration_seconds': duration,
+                'average_time_per_ticket': duration / len(resolutions) if resolutions else 0,
+                'by_action': {},
+                'confidence_stats': {
+                    'average': sum(r.confidence_score for r in resolutions) / len(resolutions) if resolutions else 0,
+                    'min': min(r.confidence_score for r in resolutions) if resolutions else 0,
+                    'max': max(r.confidence_score for r in resolutions) if resolutions else 0,
+                    'high_confidence_count': sum(1 for r in resolutions if r.confidence_score > 0.90),
+                    'low_confidence_count': sum(1 for r in resolutions if r.confidence_score < 0.70)
+                },
+                'tool_call_stats': {
+                    'total_calls': sum(len(r.tool_calls) for r in resolutions),
+                    'average_per_ticket': sum(len(r.tool_calls) for r in resolutions) / len(resolutions) if resolutions else 0
+                },
+                'timestamp': datetime.now().isoformat(),
+                'note': f'Processed {len(new_ticket_ids)} new tickets. {len(already_processed)} were already processed.'
+            }
+            
+            # Count by action
+            for resolution in resolutions:
+                action = resolution.action.value
+                results_summary['by_action'][action] = results_summary['by_action'].get(action, 0) + 1
             
             return jsonify({
                 'success': True,

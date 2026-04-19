@@ -14,13 +14,21 @@ const state = {
         status: ''
     }
 };
+
+// Global loading modal instance
+let loadingModalInstance = null;
+
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Frontend initialized');
     
-    // Load initial data
-    await loadTickets();
-    await loadResults();
-    await updateStats();
+    // Initialize loading modal instance
+    const loadingModalElement = document.getElementById('loadingModal');
+    if (loadingModalElement) {
+        loadingModalInstance = new bootstrap.Modal(loadingModalElement, {
+            backdrop: 'static',
+            keyboard: false
+        });
+    }
     
     // Set up event listeners
     setupEventListeners();
@@ -135,7 +143,10 @@ async function processSingleTicket(ticketId) {
         console.error('Error processing ticket:', error);
         showAlert('Error processing ticket', 'danger');
     } finally {
-        hideLoadingModal();
+        // Add small delay before hiding to ensure modal closes properly
+        setTimeout(() => {
+            hideLoadingModal();
+        }, 500);
     }
 }
 
@@ -183,7 +194,10 @@ async function processAllTickets() {
         showAlert('Error processing tickets', 'danger');
     } finally {
         state.isProcessing = false;
-        hideLoadingModal();
+        // Add small delay before hiding to ensure modal closes properly
+        setTimeout(() => {
+            hideLoadingModal();
+        }, 500);
     }
 }
 
@@ -232,6 +246,7 @@ async function processOneByOne() {
                         ticket_id: ticket.ticket_id,
                         action: data.data.action,
                         confidence_score: data.data.confidence,
+                        decision_reason: data.data.decision_reason,  // NEW: Store LLM reason
                         tool_calls: data.data.tool_calls
                     };
                     
@@ -261,7 +276,10 @@ async function processOneByOne() {
         showAlert('Error processing tickets', 'danger');
     } finally {
         state.isProcessing = false;
-        hideLoadingModal();
+        // Add small delay before hiding to ensure modal closes properly
+        setTimeout(() => {
+            hideLoadingModal();
+        }, 500);
     }
 }
 
@@ -409,9 +427,14 @@ function renderResults() {
                     <span class="badge bg-success"><i class="fas fa-check-circle"></i> Done</span>
                 </td>
                 <td>
-                    <button class="btn btn-sm btn-outline-primary" onclick="viewDetails('${result.ticket_id}')">
-                        <i class="fas fa-eye"></i> View
-                    </button>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button class="btn btn-outline-primary" onclick="viewDecisionReason('${result.ticket_id}', '${result.decision_reason ? result.decision_reason.replace(/'/g, "&apos;") : result.action}')">
+                            <i class="fas fa-lightbulb"></i> Reason
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="viewDetails('${result.ticket_id}')">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
                 </td>
             </tr>
         `;
@@ -514,20 +537,23 @@ function showAlert(message, type = 'info') {
  * Show loading modal
  */
 function showLoadingModal(title, details) {
-    document.getElementById('loading-text').textContent = title;
-    document.getElementById('loading-details').textContent = details;
+    const textElement = document.getElementById('loading-text');
+    const detailsElement = document.getElementById('loading-details');
     
-    const modal = new bootstrap.Modal(document.getElementById('loadingModal'));
-    modal.show();
+    if (textElement) textElement.textContent = title;
+    if (detailsElement) detailsElement.textContent = details;
+    
+    if (loadingModalInstance) {
+        loadingModalInstance.show();
+    }
 }
 
 /**
  * Hide loading modal
  */
 function hideLoadingModal() {
-    const modal = bootstrap.Modal.getInstance(document.getElementById('loadingModal'));
-    if (modal) {
-        modal.hide();
+    if (loadingModalInstance) {
+        loadingModalInstance.hide();
     }
 }
 
@@ -548,6 +574,56 @@ function updateHealthStatus(isHealthy) {
 /**
  * View ticket details
  */
+/**
+ * View decision reason for a ticket - NEW
+ */
+function viewDecisionReason(ticketId, reason) {
+    const ticket = state.tickets.find(t => t.ticket_id === ticketId);
+    const result = state.results[ticketId];
+    
+    if (!ticket) {
+        showAlert('Ticket not found', 'danger');
+        return;
+    }
+    
+    const reasonText = reason && reason !== 'null' ? reason : (result && result.decision_reason ? result.decision_reason : 'No reason available');
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-lightbulb"></i> Decision Reason</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <strong>Ticket:</strong> ${ticketId}<br>
+                    <strong>Customer:</strong> ${ticket.customer_email}<br>
+                    <strong>Action:</strong> <span class="badge bg-${result ? (result.action === 'approve_refund' ? 'success' : result.action === 'deny' ? 'danger' : 'warning') : 'secondary'}">${result ? result.action.replace('_', ' ').toUpperCase() : 'N/A'}</span>
+                    <hr>
+                    <div class="alert alert-info">
+                        <p class="mb-0"><strong>LLM-Generated Reason:</strong></p>
+                        <p class="mt-2 mb-0">${reasonText}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    const bsModal = new bootstrap.Modal(modal);
+    bsModal.show();
+    
+    // Clean up when hidden
+    modal.addEventListener('hidden.bs.modal', () => {
+        modal.remove();
+    });
+}
+
 function viewDetails(ticketId) {
     const ticket = state.tickets.find(t => t.ticket_id === ticketId);
     const result = state.results[ticketId];
